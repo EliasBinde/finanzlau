@@ -1,0 +1,234 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About us",
+    "blog": "Blog",
+    "contact": "Contact"
+  },
+  "contactForm": {
+    "title": "Contact our advisory team",
+    "description": "Tell us what you’re looking for — we’ll route your request to the right specialist.",
+    "reset": "Reset",
+    "successMessage": "Thank you — we’ve received your message and will get back to you shortly.",
+    "errorMessage": "Please review the highlighted fields.",
+    "honeypotLabel": "Website",
+    "fields": {
+      "fullName": {
+        "label": "Full name",
+        "placeholder": "John Doe"
+      },
+      "email": {
+        "label": "Work email",
+        "placeholder": "john.doe@company.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+49 30 123456"
+      },
+      "country": {
+        "label": "Country",
+        "placeholder": "Select a country"
+      },
+      "topic": {
+        "label": "Topic",
+        "placeholder": "Select a topic",
+        "empty": "No topics found."
+      },
+      "message": {
+        "label": "How can we help?",
+        "placeholder": "Briefly describe your situation, goals, and desired timeline…"
+      },
+      "contactPreference": {
+        "label": "Preferred contact method",
+        "email": "Email",
+        "phone": "Phone"
+      },
+      "consent": {
+        "label": "I consent to being contacted regarding this inquiry."
+      }
+    },
+    "actions": {
+      "submit": "Send message",
+      "submitting": "Sending…",
+      "clear": "Clear"
+    },
+    "options": {
+      "interests": [
+        "Wealth management",
+        "Retirement planning",
+        "Corporate finance",
+        "Insurance & risk",
+        "Other"
+      ],
+      "countries": [
+        "Germany",
+        "Austria",
+        "Switzerland",
+        "Netherlands",
+        "United Kingdom",
+        "United States",
+        "Other"
+      ]
+    }
+  },
+  "appointmentSlots": {
+    "title": "Book an appointment",
+    "description": "Choose a time slot. Unavailable slots are disabled.",
+    "actions": {
+      "refresh": "Refresh",
+      "loading": "Loading..."
+    },
+    "labels": {
+      "timezone": "Timezone",
+      "reloadAria": "Reload available slots",
+      "prevDayAria": "Previous day",
+      "nextDayAria": "Next day",
+      "regionAria": "Appointment slots",
+      "slotsAria": "Available time slots"
+    },
+    "messages": {
+      "loadingSlots": "Loading available times…",
+      "noSlots": "No slots available.",
+      "tip": "Tip: Use ← / → to switch days."
+    },
+    "errors": {
+      "failedWithStatus": "Failed to load slots ({status}). Please try again.",
+      "endpointNotFound": "Slots endpoint not found. Please try again or contact support.",
+      "serverError": "Server error while loading slots. Please try again in a moment."
+    },
+    "slot": {
+      "unavailableAria": "{label} unavailable",
+      "bookAria": "Book {label}"
+    }
+  },
+  "appointmentBookingModal": {
+    "dialogAriaLabel": "Book appointment dialog",
+    "title": "Confirm your appointment",
+    "description": {
+      "withSlot": "{slotLabel}",
+      "noSlot": "Choose a slot first."
+    },
+    "status": {
+      "validationError": "Please provide your name and email.",
+      "bookingFailedFallback": "Booking failed. Please try another slot.",
+      "success": "Booked! You’ll receive a confirmation shortly."
+    },
+    "form": {
+      "ariaLabel": "Booking form",
+      "fields": {
+        "name": { "label": "Full name" },
+        "email": { "label": "Email" },
+        "phone": { "label": "Phone (optional)" },
+        "message": { "label": "Notes (optional)" }
+      }
+    },
+    "actions": {
+      "cancel": "Cancel",
+      "close": "Close",
+      "confirm": "Confirm booking",
+      "booking": "Booking...",
+      "booked": "Booked"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Independent advisory",
+      "badge2": "Insurance & Finance",
+      "title": "Clear plan. Calm confidence.",
+      "subtitle": "I help you structure insurance and financial products to fit your life — simple, efficient, and without unnecessary complexity.",
+      "primaryCta": "Book a call",
+      "secondaryCta": "About me",
+      "disclaimer": "Note: No legal or tax advice. I support you with selection, structure, and implementation of suitable solutions.",
+      "cards": {
+        "card1Title": "Fast start",
+        "card1Desc": "Get clarity in 15 minutes",
+        "card1Body": "A quick check of your situation, goals, and priorities. You’ll know what makes sense — and what doesn’t.",
+        "card2Title": "Transparent recommendations",
+        "card2Desc": "As little as possible, as much as needed",
+        "card2Body": "Clear proposals, understandable reasoning, and clean execution — no jargon.",
+        "card3Title": "What we typically look at",
+        "card3Desc": "A quick overview of common building blocks",
+        "card3Bullets": [
+          "Income & family protection",
+          "Retirement & wealth building",
+          "Liability, household, legal protection",
+          "Health insurance optimization (case-dependent)",
+          "Solutions for freelancers & entrepreneurs",
+          "Existing policies: clean-up & optimization"
+        ]
+      }
+    },
+    "stats": {
+      "items": [
+        { "value": "26", "label": "years — modern & digital" },
+        { "value": "100%", "label": "independent approach" },
+        { "value": "1:1", "label": "direct advisory" }
+      ]
+    },
+    "services": {
+      "title": "How we work together",
+      "subtitle": "A simple process that delivers clarity fast.",
+      "items": [
+        {
+          "title": "Review",
+          "desc": "Goals, risks, current setup",
+          "body": "We define your situation and priorities. No endless meetings — only what truly matters."
+        },
+        {
+          "title": "Plan",
+          "desc": "Options & recommendations",
+          "body": "You get concrete options with clear pros/cons. Decisions stay with you."
+        },
+        {
+          "title": "Implementation",
+          "desc": "Clean, documented, understandable",
+          "body": "I handle the execution and make sure everything is clearly documented."
+        }
+      ]
+    },
+    "trust": {
+      "title": "Value over hype",
+      "subtitle": "Advice that stays stable long-term.",
+      "quotes": [
+        {
+          "name": "Client from Berlin",
+          "role": "Employee",
+          "quote": "For the first time I understood what I actually need — and what I can skip."
+        },
+        {
+          "name": "Client from NRW",
+          "role": "Self-employed",
+          "quote": "Very structured, fast, and zero pressure. That’s how advisory should be."
+        },
+        {
+          "name": "Client from Hamburg",
+          "role": "Early-career",
+          "quote": "Clear recommendation, clean implementation. Done in one appointment."
+        },
+        {
+          "name": "Client from Mettmann",
+          "role": "Employee",
+          "quote": "Everything top"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for clarity?",
+      "subtitle": "Book an appointment or explore helpful articles.",
+      "primary": "Book a call",
+      "secondary": "Go to blog"
+    },
+    "images": {
+      "heroAlt": "Advisory – clarity and overview",
+      "serviceAlt": "Advisory – example image",
+      "asideAlt": "Advisory – details",
+      "ctaAlt": "Appointment – example image"
+    },
+    "aside": {
+      "title": "Short & clear",
+      "subtitle": "Less complexity, more impact.",
+      "body": "Mock copy: this can later be a short trust-building paragraph (approach, values, focus).",
+      "cta": "Book a call"
+    }
+  }
+}

@@ -1,0 +1,229 @@
+{
+  "nav": { "home": "Start", "about": "Über uns", "blog": "Blog", "contact": "Kontakt" },
+  "contactForm": {
+    "title": "Kontaktieren Sie unser Beratungsteam",
+    "description": "Sagen Sie uns kurz, was Sie suchen – wir leiten Ihre Anfrage an die passende Ansprechperson weiter.",
+    "reset": "Zurücksetzen",
+    "successMessage": "Danke — wir haben Ihre Nachricht erhalten und melden uns zeitnah.",
+    "errorMessage": "Bitte prüfen Sie die markierten Felder.",
+    "honeypotLabel": "Website",
+    "fields": {
+      "fullName": {
+        "label": "Vollständiger Name",
+        "placeholder": "Max Mustermann"
+      },
+      "email": {
+        "label": "Geschäftliche E-Mail",
+        "placeholder": "max.mustermann@firma.de"
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "+49 30 123456"
+      },
+      "country": {
+        "label": "Land",
+        "placeholder": "Land auswählen"
+      },
+      "topic": {
+        "label": "Thema",
+        "placeholder": "Thema auswählen",
+        "empty": "Keine Themen gefunden."
+      },
+      "message": {
+        "label": "Wie können wir helfen?",
+        "placeholder": "Beschreiben Sie kurz Ihre Situation, Ziele und den gewünschten Zeitrahmen…"
+      },
+      "contactPreference": {
+        "label": "Bevorzugte Kontaktart",
+        "email": "E-Mail",
+        "phone": "Telefon"
+      },
+      "consent": {
+        "label": "Ich willige ein, dass ich zu dieser Anfrage kontaktiert werde."
+      }
+    },
+    "actions": {
+      "submit": "Nachricht senden",
+      "submitting": "Wird gesendet…",
+      "clear": "Leeren"
+    },
+    "options": {
+      "interests": [
+        "Vermögensverwaltung",
+        "Altersvorsorge",
+        "Unternehmensfinanzierung",
+        "Versicherung & Risiko",
+        "Sonstiges"
+      ],
+      "countries": [
+        "Deutschland",
+        "Österreich",
+        "Schweiz",
+        "Niederlande",
+        "Vereinigtes Königreich",
+        "Vereinigte Staaten",
+        "Sonstiges"
+      ]
+    }
+  },
+  "appointmentSlots": {
+    "title": "Termin buchen",
+    "description": "Wählen Sie einen Zeitslot. Nicht verfügbare Slots sind deaktiviert.",
+    "actions": {
+      "refresh": "Aktualisieren",
+      "loading": "Lädt…"
+    },
+    "labels": {
+      "timezone": "Zeitzone",
+      "reloadAria": "Verfügbare Termine neu laden",
+      "prevDayAria": "Vorheriger Tag",
+      "nextDayAria": "Nächster Tag",
+      "regionAria": "Termin-Slots",
+      "slotsAria": "Verfügbare Zeitslots"
+    },
+    "messages": {
+      "loadingSlots": "Verfügbare Zeiten werden geladen…",
+      "noSlots": "Keine Termine verfügbar.",
+      "tip": "Tipp: Nutzen Sie ← / →, um den Tag zu wechseln."
+    },
+    "errors": {
+      "failedWithStatus": "Slots konnten nicht geladen werden ({status}). Bitte versuchen Sie es erneut.",
+      "endpointNotFound": "Slots-Endpunkt nicht gefunden. Bitte versuchen Sie es erneut oder kontaktieren Sie den Support.",
+      "serverError": "Serverfehler beim Laden der Slots. Bitte versuchen Sie es in einem Moment erneut."
+    },
+    "slot": {
+      "unavailableAria": "{label} nicht verfügbar",
+      "bookAria": "{label} buchen"
+    }
+  },
+  "appointmentBookingModal": {
+    "dialogAriaLabel": "Dialog zur Terminbuchung",
+    "title": "Termin bestätigen",
+    "description": {
+      "withSlot": "{slotLabel}",
+      "noSlot": "Bitte wählen Sie zuerst einen Zeitslot aus."
+    },
+    "status": {
+      "validationError": "Bitte geben Sie Ihren Namen und Ihre E-Mail-Adresse an.",
+      "bookingFailedFallback": "Buchung fehlgeschlagen. Bitte wählen Sie einen anderen Zeitslot.",
+      "success": "Gebucht! Sie erhalten in Kürze eine Bestätigung."
+    },
+    "form": {
+      "ariaLabel": "Buchungsformular",
+      "fields": {
+        "name": { "label": "Vollständiger Name" },
+        "email": { "label": "E-Mail" },
+        "phone": { "label": "Telefon (optional)" },
+        "message": { "label": "Notizen (optional)" }
+      }
+    },
+    "actions": {
+      "cancel": "Abbrechen",
+      "close": "Schließen",
+      "confirm": "Buchung bestätigen",
+      "booking": "Wird gebucht…",
+      "booked": "Gebucht"
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Unabhängige Beratung",
+      "badge2": "Versicherung & Finanzen",
+      "title": "Klarer Plan. Ruhiges Gefühl.",
+      "subtitle": "Ich helfe Ihnen, Versicherungen und Finanzprodukte so zu strukturieren, dass sie zu Ihrem Leben passen — verständlich, effizient und ohne unnötigen Ballast.",
+      "primaryCta": "Termin buchen",
+      "secondaryCta": "Mehr über mich",
+      "disclaimer": "Hinweis: Keine Rechts- oder Steuerberatung. Ich unterstütze bei Auswahl, Struktur und Umsetzung passender Lösungen.",
+      "cards": {
+        "card1Title": "Schneller Start",
+        "card1Desc": "In 15 Minuten zur Orientierung",
+        "card1Body": "Kurzer Check Ihrer Situation, Ziele und Prioritäten. Danach wissen Sie, was sinnvoll ist — und was nicht.",
+        "card2Title": "Transparente Empfehlung",
+        "card2Desc": "So wenig wie möglich, so viel wie nötig",
+        "card2Body": "Klare Vorschläge, verständliche Begründung, und eine saubere Umsetzung — ohne Fachchinesisch.",
+        "card3Title": "Worauf wir typischerweise schauen",
+        "card3Desc": "Ein Überblick über häufige Bausteine",
+        "card3Bullets": [
+          "Absicherung von Einkommen & Familie",
+          "Altersvorsorge & Vermögensaufbau",
+          "Haftpflicht, Hausrat, Rechtsschutz",
+          "PKV / GKV-Optimierung (je nach Fall)",
+          "Unternehmens- & Selbstständigenlösungen",
+          "Bestehende Verträge: aufräumen & optimieren"
+        ]
+      }
+    },
+    "stats": {
+      "items": [
+        { "value": "26", "label": "Jahre — modern & digital" },
+        { "value": "100%", "label": "Unabhängiger Ansatz" },
+        { "value": "1:1", "label": "Beratung ohne Umwege" }
+      ]
+    },
+    "services": {
+      "title": "So arbeiten wir zusammen",
+      "subtitle": "Ein einfacher Prozess, der schnell Klarheit bringt.",
+      "items": [
+        {
+          "title": "Analyse",
+          "desc": "Ziele, Risiken, Bestand",
+          "body": "Wir klären Ausgangslage und Prioritäten. Keine Endlos-Meetings — nur das, was wirklich wichtig ist."
+        },
+        {
+          "title": "Konzept",
+          "desc": "Optionen & Empfehlungen",
+          "body": "Sie bekommen konkrete Optionen mit klaren Vor- und Nachteilen. Entscheidungen bleiben bei Ihnen."
+        },
+        {
+          "title": "Umsetzung",
+          "desc": "Sauber, dokumentiert, nachvollziehbar",
+          "body": "Ich kümmere mich um die Umsetzung und sorge dafür, dass alles verständlich dokumentiert ist."
+        }
+      ]
+    },
+    "trust": {
+      "title": "Wert statt Hype",
+      "subtitle": "Beratung, die langfristig stabil bleibt.",
+      "quotes": [
+        {
+          "name": "Kundin aus Berlin",
+          "role": "Angestellte",
+          "quote": "Endlich habe ich verstanden, was ich wirklich brauche — und was ich mir sparen kann."
+        },
+        {
+          "name": "Kunde aus NRW",
+          "role": "Selbstständig",
+          "quote": "Sehr strukturiert, schnell, und ohne Verkaufsdruck. Genau so sollte Beratung sein."
+        },
+        {
+          "name": "Kundin aus Hamburg",
+          "role": "Berufseinsteigerin",
+          "quote": "Klare Empfehlung, sauber umgesetzt. Das war in einem Termin erledigt."
+        },
+        {
+          "name": "Kunde aus Mettmann",
+          "role": "Angestellter",
+          "quote": "Alles top"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Bereit für Klarheit?",
+      "subtitle": "Buchen Sie einen Termin oder stöbern Sie in hilfreichen Beiträgen.",
+      "primary": "Termin buchen",
+      "secondary": "Zum Blog"
+    },
+    "images": {
+      "heroAlt": "Beratung – Übersicht & Klarheit",
+      "serviceAlt": "Beratung – Beispielbild",
+      "asideAlt": "Beratung – Details",
+      "ctaAlt": "Termin – Beispielbild"
+    },
+    "aside": {
+      "title": "Kurz & klar",
+      "subtitle": "Weniger Komplexität, mehr Wirkung.",
+      "body": "Mock-Text: Hier kann später ein kurzer Absatz stehen, der Vertrauen aufbaut (Arbeitsweise, Werte, Fokus).",
+      "cta": "Termin buchen"
+    }
+  }
+}
