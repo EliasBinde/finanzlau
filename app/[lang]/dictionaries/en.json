@@ -116,10 +116,18 @@
     "form": {
       "ariaLabel": "Booking form",
       "fields": {
-        "name": { "label": "Full name" },
-        "email": { "label": "Email" },
-        "phone": { "label": "Phone (optional)" },
-        "message": { "label": "Notes (optional)" }
+        "name": {
+          "label": "Full name"
+        },
+        "email": {
+          "label": "Email"
+        },
+        "phone": {
+          "label": "Phone (optional)"
+        },
+        "message": {
+          "label": "Notes (optional)"
+        }
       }
     },
     "actions": {
@@ -160,9 +168,18 @@
     },
     "stats": {
       "items": [
-        { "value": "26", "label": "years — modern & digital" },
-        { "value": "100%", "label": "independent approach" },
-        { "value": "1:1", "label": "direct advisory" }
+        {
+          "value": "26",
+          "label": "years — modern & digital"
+        },
+        {
+          "value": "100%",
+          "label": "independent approach"
+        },
+        {
+          "value": "1:1",
+          "label": "direct advisory"
+        }
       ]
     },
     "services": {
@@ -229,6 +246,108 @@
       "subtitle": "Less complexity, more impact.",
       "body": "Mock copy: this can later be a short trust-building paragraph (approach, values, focus).",
       "cta": "Book a call"
+    }
+  },
+  "calculators": {
+    "compoundInterest": {
+      "title": "Compound Interest Calculator",
+      "subtitle": "Calculate how your investment can grow over time.",
+      "actions": {
+        "calculate": "Calculate",
+        "reset": "Reset"
+      },
+      "inputs": {
+        "initial": "Initial investment",
+        "monthly": "Monthly contribution",
+        "years": "Investment period (years)",
+        "rate": "Annual interest rate"
+      },
+      "units": {
+        "currency": "€",
+        "percent": "%",
+        "yearsRange": "1–60",
+        "rateRange": "0–30%"
+      },
+      "results": {
+        "final": "Final amount",
+        "contributions": "Total contributions",
+        "interest": "Interest earned"
+      },
+      "charts": {
+        "splitTitle": "Final amount (breakdown)",
+        "splitSubtitle": "Contributions / Interest",
+        "trendTitle": "Growth over time (final amount)"
+      },
+      "disclaimer": "Note: Simplified model (constant rate, monthly contribution at the beginning of each period).",
+      "empty": {
+        "title": "Calculate to see results",
+        "body": "Adjust the values and click “Calculate”."
+      }
+    },
+    "emergencyFund": {
+      "title": "Emergency Fund Calculator",
+      "subtitle": "Estimate buffer, savings rate, and status — tailored to your situation.",
+      "inputs": {
+        "incomeNetMonthly": "Net monthly income",
+        "incomeNetMonthlyHint": "Net (after taxes / deductions).",
+        "employmentType": "Employment",
+        "employmentTypePlaceholder": "Select",
+        "employmentEmployee": "Employee",
+        "employmentSelfEmployed": "Self-employed",
+        "employeeContract": "Contract type",
+        "employeeContractPlaceholder": "Select",
+        "employeePermanent": "Permanent",
+        "employeeFixedTerm": "Fixed-term",
+        "expensesTitle": "Essential monthly expenses",
+        "rent": "Housing (rent/mortgage)",
+        "utilities": "Utilities & energy",
+        "telecom": "Phone/internet",
+        "food": "Groceries",
+        "necessities": "Other essentials",
+        "expensesTotal": "Total expenses",
+        "currentLiquidity": "Current emergency liquidity",
+        "currentLiquidityHint": "Cash / instant-access savings.",
+        "savingsRateTitle": "Recommended savings rate",
+        "savingsRateRecommendedPrefix": "Suggestion:",
+        "savingsRateRecommendedSuffix": "of net income (adjustable).",
+        "savingsRatePercent": "Savings rate (%)",
+        "savingsRateHint": "0–35% (rule of thumb)."
+      },
+      "actions": {
+        "calculate": "Calculate",
+        "useRecommended": "Use suggestion"
+      },
+      "status": {
+        "red": "Too low — build buffer first",
+        "yellow": "Okay — minimum reached",
+        "green": "Great — target range reached"
+      },
+      "results": {
+        "title": "Result",
+        "subtitle": "Target range and timeline based on your inputs.",
+        "statusLabel": "Status",
+        "recommendedRange": "Recommendation (months)",
+        "monthsUnit": "months",
+        "targetMin": "Target (minimum)",
+        "targetMax": "Target (maximum)",
+        "monthlySavings": "Monthly savings",
+        "monthlySavingsFromRatePrefix": "Based on:",
+        "timeToReach": "Time to target",
+        "timeUnit": "months",
+        "timeUnknown": "—"
+      },
+      "chart": {
+        "title": "Comparison: Today vs target",
+        "amountLabel": "Amount",
+        "current": "Today",
+        "min": "Minimum",
+        "max": "Maximum"
+      },
+      "hints": {
+        "line1": "Tip: Keep the emergency fund liquid (cash / savings), not in risky investments.",
+        "line2": "The less stable the income, the more important a larger buffer becomes."
+      },
+      "note": "Note: Rule-of-thumb calculation. Not legal or tax advice."
     }
   }
 }

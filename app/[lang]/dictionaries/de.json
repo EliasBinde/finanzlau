@@ -1,5 +1,10 @@
 {
-  "nav": { "home": "Start", "about": "Über uns", "blog": "Blog", "contact": "Kontakt" },
+  "nav": {
+    "home": "Start",
+    "about": "Über uns",
+    "blog": "Blog",
+    "contact": "Kontakt"
+  },
   "contactForm": {
     "title": "Kontaktieren Sie unser Beratungsteam",
     "description": "Sagen Sie uns kurz, was Sie suchen – wir leiten Ihre Anfrage an die passende Ansprechperson weiter.",
@@ -111,10 +116,18 @@
     "form": {
       "ariaLabel": "Buchungsformular",
       "fields": {
-        "name": { "label": "Vollständiger Name" },
-        "email": { "label": "E-Mail" },
-        "phone": { "label": "Telefon (optional)" },
-        "message": { "label": "Notizen (optional)" }
+        "name": {
+          "label": "Vollständiger Name"
+        },
+        "email": {
+          "label": "E-Mail"
+        },
+        "phone": {
+          "label": "Telefon (optional)"
+        },
+        "message": {
+          "label": "Notizen (optional)"
+        }
       }
     },
     "actions": {
@@ -155,9 +168,18 @@
     },
     "stats": {
       "items": [
-        { "value": "26", "label": "Jahre — modern & digital" },
-        { "value": "100%", "label": "Unabhängiger Ansatz" },
-        { "value": "1:1", "label": "Beratung ohne Umwege" }
+        {
+          "value": "26",
+          "label": "Jahre — modern & digital"
+        },
+        {
+          "value": "100%",
+          "label": "Unabhängiger Ansatz"
+        },
+        {
+          "value": "1:1",
+          "label": "Beratung ohne Umwege"
+        }
       ]
     },
     "services": {
@@ -224,6 +246,108 @@
       "subtitle": "Weniger Komplexität, mehr Wirkung.",
       "body": "Mock-Text: Hier kann später ein kurzer Absatz stehen, der Vertrauen aufbaut (Arbeitsweise, Werte, Fokus).",
       "cta": "Termin buchen"
+    }
+  },
+  "calculators": {
+    "compoundInterest": {
+      "title": "Zinseszinsrechner",
+      "subtitle": "Berechnen Sie, wie sich Ihr Investment über die Zeit entwickelt.",
+      "actions": {
+        "calculate": "Berechnen",
+        "reset": "Zurücksetzen"
+      },
+      "inputs": {
+        "initial": "Anfangskapital",
+        "monthly": "Monatliche Sparrate",
+        "years": "Anlagedauer (Jahre)",
+        "rate": "Jährlicher Zinssatz"
+      },
+      "units": {
+        "currency": "€",
+        "percent": "%",
+        "yearsRange": "1–60",
+        "rateRange": "0–30%"
+      },
+      "results": {
+        "final": "Endkapital",
+        "contributions": "Gesamte Einzahlungen",
+        "interest": "Erhaltene Zinsen"
+      },
+      "charts": {
+        "splitTitle": "Endkapital (Aufteilung)",
+        "splitSubtitle": "Einzahlungen / Zinsen",
+        "trendTitle": "Verlauf (Endkapital)"
+      },
+      "disclaimer": "Hinweis: Vereinfachtes Modell (konstanter Zinssatz, monatliche Einzahlung am Periodenanfang).",
+      "empty": {
+        "title": "Berechnen, um Ergebnisse zu sehen",
+        "body": "Passen Sie die Werte an und klicken Sie auf „Berechnen“."
+      }
+    },
+    "emergencyFund": {
+      "title": "Notgroschen-Rechner",
+      "subtitle": "Ermitteln Sie Rücklage, Sparrate und Status — passend zu Ihrer Situation.",
+      "inputs": {
+        "incomeNetMonthly": "Monatliches Nettoeinkommen",
+        "incomeNetMonthlyHint": "Netto (nach Steuern/Abgaben).",
+        "employmentType": "Beschäftigung",
+        "employmentTypePlaceholder": "Bitte auswählen",
+        "employmentEmployee": "Angestellt",
+        "employmentSelfEmployed": "Selbstständig",
+        "employeeContract": "Vertragsart",
+        "employeeContractPlaceholder": "Bitte auswählen",
+        "employeePermanent": "Unbefristet",
+        "employeeFixedTerm": "Befristet",
+        "expensesTitle": "Monatliche Grundausgaben",
+        "rent": "Wohnen (Miete/Kredit)",
+        "utilities": "Nebenkosten & Energie",
+        "telecom": "Telefon/Internet",
+        "food": "Lebensmittel",
+        "necessities": "Sonstiges Notwendiges",
+        "expensesTotal": "Summe Ausgaben",
+        "currentLiquidity": "Aktuelle Notfall-Liquidität",
+        "currentLiquidityHint": "Tagesgeld / Giro / sofort verfügbar.",
+        "savingsRateTitle": "Empfohlene Sparquote",
+        "savingsRateRecommendedPrefix": "Vorschlag:",
+        "savingsRateRecommendedSuffix": "vom Netto (anpassbar).",
+        "savingsRatePercent": "Sparquote (%)",
+        "savingsRateHint": "0–35% (Richtwert)."
+      },
+      "actions": {
+        "calculate": "Berechnen",
+        "useRecommended": "Vorschlag übernehmen"
+      },
+      "status": {
+        "red": "Zu niedrig – zuerst Puffer aufbauen",
+        "yellow": "Okay – Minimum erreicht",
+        "green": "Sehr gut – Zielbereich erreicht"
+      },
+      "results": {
+        "title": "Ergebnis",
+        "subtitle": "Zielbereich und Zeitplan basierend auf Ihren Angaben.",
+        "statusLabel": "Status",
+        "recommendedRange": "Empfehlung (Monate)",
+        "monthsUnit": "Monate",
+        "targetMin": "Ziel (Minimum)",
+        "targetMax": "Ziel (Maximum)",
+        "monthlySavings": "Monatliche Rücklage",
+        "monthlySavingsFromRatePrefix": "Basierend auf:",
+        "timeToReach": "Zeit bis Ziel",
+        "timeUnit": "Monate",
+        "timeUnknown": "—"
+      },
+      "chart": {
+        "title": "Vergleich: Heute vs. Ziel",
+        "amountLabel": "Betrag",
+        "current": "Heute",
+        "min": "Minimum",
+        "max": "Maximum"
+      },
+      "hints": {
+        "line1": "Tipp: Notgroschen liquide halten (Tagesgeld), nicht im Risiko-Depot.",
+        "line2": "Je unsicherer das Einkommen, desto wichtiger ist ein größerer Puffer."
+      },
+      "note": "Hinweis: Faustregel-Berechnung. Keine Rechts- oder Steuerberatung."
     }
   }
 }
