@@ -27,17 +27,17 @@ export default async function Page({params}: PageProps<'/[lang]/calculators'>) {
                 </CardHeader>
                 <CardContent className={"flex flex-col gap-4 p-6"}>
                     <Link href={withLang(`/calculators/compound-interest`, language)}>
-                        <Button className="w-full">
+                        <Button className="w-full cursor-pointer">
                             {dict.calculators.compoundInterest.title}
                         </Button>
                     </Link>
                     <Link href={withLang(`/calculators/gross-net`, language)}>
-                        <Button className="w-full">
+                        <Button className="w-full cursor-pointer">
                             {dict.calculators.grossNet.title}
                         </Button>
                     </Link>
                     <Link href={withLang(`/calculators/emergency-fund`, language)}>
-                        <Button className="w-full">
+                        <Button className="w-full cursor-pointer">
                             {dict.calculators.emergencyFund.title}
                         </Button>
                     </Link>

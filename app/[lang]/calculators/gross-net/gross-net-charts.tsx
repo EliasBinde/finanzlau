@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import type {Dictionary, Locale} from "@/app/[lang]/dictionaries";
-import {Card, CardContent} from "@/components/ui/card";
+import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 
 import {PieChart} from "@mui/x-charts/PieChart";
 import type {DeductionLine, GrossNetResult} from "@/lib/calculators/gross-net/gross-net";
@@ -44,12 +44,12 @@ export function GrossNetCharts({
 
     return (
         <Card>
+            <CardHeader>
+                <CardTitle>
+                    {t.chart.title}
+                </CardTitle>
+            </CardHeader>
             <CardContent className="space-y-4">
-                {/**<div>
-                 <p className="text-sm font-medium">{t.chart.title}</p>
-                 <p className="text-sm text-muted-foreground">{t.chart.subtitle}</p>
-                 </div>
-                 **/}
                 <div className="w-full">
                     <PieChart
                         series={[

@@ -15,9 +15,9 @@ function formatEURFromCents(cents: number, lang: Locale): string {
 
 function Row({label, value}: { label: string; value: string }) {
     return (
-        <div className="grid grid-cols-[minmax(0,1fr)_auto] items-start gap-x-3 gap-y-0.5">
+        <div className="flex flex-col">
             <p className="text-sm text-muted-foreground leading-snug min-w-0">{label}</p>
-            <p className="text-sm font-medium text-right tabular-nums whitespace-nowrap">{value}</p>
+            <p className="text-sm font-medium tabular-nums whitespace-nowrap">{value}</p>
         </div>
     );
 }

@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import type {Dictionary} from "@/app/[lang]/dictionaries";
 import {UrlObject} from "url";
+import Image from "next/image";
 
 type Props = {
     lang: "de" | "en";
@@ -54,7 +55,9 @@ export function Navbar({lang, dict}: Props) {
 
     return (
         <nav aria-label="Primary navigation" className="flex w-full items-center justify-between gap-4">
-            <Link href={`/${lang}`} className="text-sm font-semibold tracking-tight" aria-label="Go to home page">
+            <Link href={`/${lang}`} className="text-xl font-semibold tracking-tight flex items-end"
+                  aria-label="Go to home page">
+                <Image src="/logo.svg" alt="Finanzlau Logo" width={33} height={33}></Image>
                 FINANZLAU
             </Link>
 

@@ -43,20 +43,34 @@ function clampNumber(v: number, min: number, max: number): number {
 }
 
 function parseNumberInput(raw: string): number {
-    const s = raw.trim();
-    if (!s) return 0;
-    const noSpaces = s.replace(/\s+/g, "");
-    if (noSpaces.includes(".") && noSpaces.includes(",")) {
-        const normalized = noSpaces.replace(/\./g, "").replace(",", ".");
+    const s0 = raw.trim();
+    if (!s0) return 0;
+
+    const s = s0.replace(/\s+/g, "");
+
+    const hasDot = s.includes(".");
+    const hasComma = s.includes(",");
+
+    if (hasDot && hasComma) {
+        const normalized = s.replace(/\./g, "").replace(",", ".");
         const n = Number(normalized);
         return Number.isFinite(n) ? n : 0;
     }
-    if (noSpaces.includes(",")) {
-        const normalized = noSpaces.replace(",", ".");
+
+    if (hasComma) {
+        const normalized = s.replace(",", ".");
         const n = Number(normalized);
         return Number.isFinite(n) ? n : 0;
     }
-    const n = Number(noSpaces);
+
+    if (hasDot) {
+        const looksLikeThousands = /^\d{1,3}(\.\d{3})+$/.test(s);
+        const normalized = looksLikeThousands ? s.replace(/\./g, "") : s;
+        const n = Number(normalized);
+        return Number.isFinite(n) ? n : 0;
+    }
+
+    const n = Number(s);
     return Number.isFinite(n) ? n : 0;
 }
 
@@ -68,11 +82,20 @@ function MoneyInput(props: {
     id: string;
     label: string;
     value: number;
-    onChange: (n: number) => void;
+    onCommit: (n: number) => void;
     suffix?: string;
     hint?: string;
+    min?: number;
+    max?: number;
 }) {
-    const {id, label, value, onChange, suffix, hint} = props;
+    const {id, label, value, onCommit, suffix, hint, min, max} = props;
+
+    const [draft, setDraft] = React.useState<string>(String(value));
+
+    React.useEffect(() => {
+        setDraft(String(value));
+    }, [value]);
+
     return (
         <Field>
             <Label htmlFor={id}>{label}</Label>
@@ -80,8 +103,31 @@ function MoneyInput(props: {
                 <Input
                     id={id}
                     inputMode="decimal"
-                    value={String(value)}
-                    onChange={(e) => onChange(parseNumberInput(e.target.value))}
+                    value={draft}
+                    onChange={(e) => setDraft(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === "Enter") (e.currentTarget as HTMLInputElement).blur();
+                    }}
+                    onBlur={() => {
+                        const raw = draft.trim();
+                        if (!raw) {
+                            setDraft(String(value));
+                            return;
+                        }
+
+                        const parsed = parseNumberInput(raw);
+                        if (!Number.isFinite(parsed)) {
+                            setDraft(String(value));
+                            return;
+                        }
+
+                        const next =
+                            typeof min === "number" && typeof max === "number"
+                                ? clampNumber(parsed, min, max)
+                                : parsed;
+
+                        onCommit(next);
+                    }}
                     className="w-full min-w-0"
                 />
                 <span className="text-sm text-muted-foreground shrink-0">{suffix ?? "€"}</span>
@@ -95,22 +141,53 @@ function NumberInput(props: {
     id: string;
     label: string;
     value: number;
-    onChange: (n: number) => void;
+    onCommit: (n: number) => void;
     hint?: string;
+    min?: number;
+    max?: number;
+    step?: number;
 }) {
-    const {id, label, value, onChange, hint} = props;
+    const {id, label, value, onCommit, hint, min, max, step} = props;
+
+    const [draft, setDraft] = React.useState<string>(String(value));
+
+    React.useEffect(() => {
+        setDraft(String(value));
+    }, [value]);
+
     return (
-        <Field>
+        <div className="space-y-2 min-w-0">
             <Label htmlFor={id}>{label}</Label>
             <Input
                 id={id}
+                type="number"
                 inputMode="numeric"
-                value={String(value)}
-                onChange={(e) => onChange(parseNumberInput(e.target.value))}
-                className="w-full min-w-0"
+                min={min}
+                max={max}
+                step={step ?? 1}
+                value={draft}
+                onChange={(e) => {
+                    setDraft(e.target.value);
+                }}
+                onBlur={() => {
+                    const raw = draft.trim();
+                    if (!raw) {
+                        setDraft(String(value));
+                        return;
+                    }
+
+                    const n = Number(raw);
+                    if (!Number.isFinite(n)) {
+                        setDraft(String(value));
+                        return;
+                    }
+
+                    onCommit(n);
+                }}
+                className="min-w-0"
             />
             {hint ? <p className="text-xs text-muted-foreground">{hint}</p> : null}
-        </Field>
+        </div>
     );
 }
 
@@ -200,7 +277,7 @@ export function GrossNetInputs({
                     id="gn-gross"
                     label={t.inputs.gross}
                     value={value.grossAmount}
-                    onChange={(n) => onChange({...value, grossAmount: clampNumber(n, 0, 1_000_000_000)})}
+                    onCommit={(n) => onChange({...value, grossAmount: clampNumber(n, 0, 1_000_000_000)})}
                     suffix="€"
                 />
 
@@ -234,7 +311,7 @@ export function GrossNetInputs({
                         id="gn-allowance"
                         label={t.inputs.allowanceAnnual}
                         value={value.allowanceAnnual}
-                        onChange={(n) => onChange({...value, allowanceAnnual: clampNumber(n, 0, 1_000_000)})}
+                        onCommit={(n) => onChange({...value, allowanceAnnual: clampNumber(n, 0, 1_000_000)})}
                         suffix="€"
                     />
                 </div>
@@ -265,7 +342,15 @@ export function GrossNetInputs({
                         id="gn-birthyear"
                         label={t.inputs.birthYear}
                         value={value.birthYear}
-                        onChange={(n) => onChange({...value, birthYear: clampNumber(Math.round(n), 1900, 2030)})}
+                        min={1900}
+                        max={2030}
+                        step={1}
+                        onCommit={(n) =>
+                            onChange({
+                                ...value,
+                                birthYear: clampNumber(Math.round(n), 1900, 2030),
+                            })
+                        }
                     />
                 </div>
 
@@ -274,7 +359,7 @@ export function GrossNetInputs({
                         id="gn-kids"
                         label={t.inputs.children}
                         value={value.kids}
-                        onChange={(n) => onChange({...value, kids: clampNumber(Math.round(n), 0, 10)})}
+                        onCommit={(n) => onChange({...value, kids: clampNumber(Math.round(n), 0, 10)})}
                         hint={t.inputs.childrenHint}
                     />
                     <div className="hidden sm:block"/>
@@ -356,7 +441,7 @@ export function GrossNetInputs({
                                 id="gn-kvz"
                                 label={t.inputs.healthAddOnRate}
                                 value={value.healthAddOnRatePct}
-                                onChange={(n) => onChange({...value, healthAddOnRatePct: clampNumber(n, 0, 10)})}
+                                onCommit={(n) => onChange({...value, healthAddOnRatePct: clampNumber(n, 0, 10)})}
                                 suffix="%"
                             />
                         </div>
@@ -367,7 +452,7 @@ export function GrossNetInputs({
                             id="gn-pkv"
                             label={t.inputs.pkvEmployeeMonthly}
                             value={value.pkvEmployeeMonthly}
-                            onChange={(n) => onChange({...value, pkvEmployeeMonthly: clampNumber(n, 0, 10_000)})}
+                            onCommit={(n) => onChange({...value, pkvEmployeeMonthly: clampNumber(n, 0, 10_000)})}
                             suffix="€"
                         />
                     ) : null}
@@ -396,14 +481,14 @@ export function GrossNetInputs({
                                 id="gn-u1"
                                 label={t.inputs.umlageU1}
                                 value={value.umlageU1Pct}
-                                onChange={(n) => onChange({...value, umlageU1Pct: clampNumber(n, 0, 20)})}
+                                onCommit={(n) => onChange({...value, umlageU1Pct: clampNumber(n, 0, 20)})}
                                 suffix="%"
                             />
                             <MoneyInput
                                 id="gn-u2"
                                 label={t.inputs.umlageU2}
                                 value={value.umlageU2Pct}
-                                onChange={(n) => onChange({...value, umlageU2Pct: clampNumber(n, 0, 20)})}
+                                onCommit={(n) => onChange({...value, umlageU2Pct: clampNumber(n, 0, 20)})}
                                 suffix="%"
                             />
                         </div>

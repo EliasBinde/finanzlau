@@ -367,8 +367,10 @@ export function computeGrossNet(input: InputsGrossNet): GrossNetResult {
         timeframe: input.timeframe,
     });
 
-    if (grossPeriodCents > 0 && wageTaxCents === 0 && soliCents === 0) {
-        throw new Error("PAP returned 0 tax on non-zero gross. Likely wrong input/output keys for generated module.");
+    const churchTaxBaseCents = Number(pap.STANDARD.churchTaxBaseCents);
+
+    if (grossAnnualCents >= 20_000_00 && wageTaxCents === 0 && soliCents === 0 && churchTaxBaseCents === 0) {
+        throw new Error("PAP returned 0 tax on substantial gross. Likely wrong input/output keys for generated module.");
     }
 
     const totalDeductionsPeriodCents = deductionsEmployee.reduce((a, x) => a + x.periodCents, 0);

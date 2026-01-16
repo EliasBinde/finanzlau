@@ -419,7 +419,7 @@
         "pv": "Care insurance (PV)"
       },
       "chart": {
-        "title": "Overview",
+        "title": "Tax and Deduction Breakdown",
         "subtitle": "Gross vs net and the main deduction buckets.",
         "gross": "Gross",
         "net": "Net",
