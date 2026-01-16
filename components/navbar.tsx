@@ -2,11 +2,11 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
+import {usePathname} from "next/navigation";
+import {Menu, X} from "lucide-react";
 
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
+import {Button} from "@/components/ui/button";
+import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from "@/components/ui/sheet";
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -14,7 +14,7 @@ import {
     NavigationMenuList,
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
+import type {Dictionary} from "@/app/[lang]/dictionaries";
 import {UrlObject} from "url";
 
 type Props = {
@@ -34,21 +34,22 @@ function isActive(pathnameNoLang: string, href: string): boolean {
     return pathnameNoLang === href || pathnameNoLang.startsWith(`${href}/`);
 }
 
-export function Navbar({ lang, dict }: Props) {
+export function Navbar({lang, dict}: Props) {
     const pathname = usePathname();
     const pathnameNoLang = stripLangPrefix(pathname, lang);
     const [open, setOpen] = React.useState(false);
 
     const items = [
-        { href: "/" as const, label: dict.nav.home },
-        { href: "/about" as const, label: dict.nav.about },
-        { href: "/blog" as const, label: dict.nav.blog },
-        { href: "/contact" as const, label: dict.nav.contact },
+        {href: "/" as const, label: dict.nav.home},
+        {href: "/about" as const, label: dict.nav.about},
+        {href: "/blog" as const, label: dict.nav.blog},
+        {href: "/calculators" as const, label: dict.nav.calculators},
+        {href: "/contact" as const, label: dict.nav.contact},
     ] as const
 
     function withLang(href: string, lang: string): UrlObject {
         const path = href === "/" ? `/${lang}` : `/${lang}${href}`;
-        return { pathname: path };
+        return {pathname: path};
     }
 
     return (
@@ -67,7 +68,8 @@ export function Navbar({ lang, dict }: Props) {
                             return (
                                 <NavigationMenuItem key={item.href}>
                                     <NavigationMenuLink asChild className={cls}>
-                                        <Link href={withLang(item.href, lang)} aria-current={active ? "page" : undefined}>
+                                        <Link href={withLang(item.href, lang)}
+                                              aria-current={active ? "page" : undefined}>
                                             {item.label}
                                         </Link>
                                     </NavigationMenuLink>
@@ -79,7 +81,7 @@ export function Navbar({ lang, dict }: Props) {
             </div>
 
             <div className="md:hidden">
-                <Sheet open={open} onOpenChange={setOpen} >
+                <Sheet open={open} onOpenChange={setOpen}>
                     <SheetTrigger asChild>
                         <Button
                             variant="ghost"
@@ -88,11 +90,11 @@ export function Navbar({ lang, dict }: Props) {
                             aria-controls="mobile-nav"
                             aria-expanded={open}
                         >
-                            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                            {open ? <X className="h-5 w-5"/> : <Menu className="h-5 w-5"/>}
                         </Button>
                     </SheetTrigger>
 
-                    <SheetContent side="right" id="mobile-nav" aria-label="Mobile navigation" >
+                    <SheetContent side="right" id="mobile-nav" aria-label="Mobile navigation">
                         <SheetHeader>
                             <SheetTitle>
                                 <span className="sr-only">Navigation</span>

@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About us",
     "blog": "Blog",
-    "contact": "Contact"
+    "contact": "Contact",
+    "calculators": "Calculators"
   },
   "contactForm": {
     "title": "Contact our advisory team",
@@ -249,6 +250,7 @@
     }
   },
   "calculators": {
+    "title": "Calculators",
     "compoundInterest": {
       "title": "Compound Interest Calculator",
       "subtitle": "Calculate how your investment can grow over time.",
@@ -348,6 +350,84 @@
         "line2": "The less stable the income, the more important a larger buffer becomes."
       },
       "note": "Note: Rule-of-thumb calculation. Not legal or tax advice."
+    },
+    "grossNet": {
+      "title": "Gross to net salary (Germany)",
+      "subtitle": "Estimate taxes and social contributions based on your inputs and the selected year.",
+      "inputs": {
+        "year": "Calculation year",
+        "timeframe": "Pay period",
+        "timeframePlaceholder": "Select pay period",
+        "timeframeMonthly": "Monthly",
+        "timeframeYearly": "Yearly",
+        "timeframeWeekly": "Weekly",
+        "timeframeDaily": "Daily",
+        "gross": "Gross income",
+        "taxClass": "Tax class (Steuerklasse)",
+        "taxClassPlaceholder": "Select tax class",
+        "allowanceMonthly": "Allowance (Freibetrag)",
+        "allowanceAnnual": "Allowance (Freibetrag)",
+        "bundesland": "Federal state (Bundesland)",
+        "bundeslandPlaceholder": "Select state",
+        "churchTax": "Church tax",
+        "churchTaxHint": "Applies only if you are subject to church tax.",
+        "birthYear": "Year of birth",
+        "children": "Children (for care insurance)",
+        "childrenHint": "Used for Pflegeversicherung adjustments.",
+        "healthTitle": "Health insurance",
+        "healthType": "Type",
+        "healthTypePlaceholder": "Select type",
+        "healthGkvGeneral": "Statutory (general rate 14.6%)",
+        "healthGkvReduced": "Statutory (reduced rate 14.0%)",
+        "healthPkv": "Private (PKV)",
+        "gkvProvider": "Statutory insurer",
+        "gkvProviderPlaceholder": "Select insurer",
+        "gkvProviderAverage": "Average (manual add-on rate)",
+        "healthAddOnRate": "Add-on rate (Zusatzbeitrag)",
+        "pkvEmployeeMonthly": "PKV premium (employee share)",
+        "employerSubsidy": "Employer subsidy",
+        "employerSubsidyHint": "50% up to the legal monthly cap.",
+        "pensionInsurance": "Pension insurance",
+        "pensionInsuranceHint": "Enable if you are subject to statutory pension insurance.",
+        "umlageTitle": "Employer levies (Umlagen)",
+        "umlageHint": "Optional: only relevant for employer-side calculation.",
+        "umlageU1": "U1 rate",
+        "umlageU2": "U2 rate"
+      },
+      "actions": {
+        "calculate": "Calculate",
+        "reset": "Reset"
+      },
+      "empty": {
+        "title": "Enter your details to see the net salary",
+        "body": "We’ll show a breakdown of taxes and social contributions."
+      },
+      "results": {
+        "net": "Net income",
+        "fromGrossPrefix": "Based on gross:",
+        "taxesTitle": "Taxes",
+        "socialTitle": "Social contributions",
+        "taxesTotal": "Taxes total",
+        "socialTotal": "Social total",
+        "totalDeductions": "Total deductions",
+        "wageTax": "Wage tax (Lohnsteuer)",
+        "solidarity": "Solidarity surcharge (Soli)",
+        "churchTax": "Church tax (Kirchensteuer)",
+        "rv": "Pension insurance (RV)",
+        "av": "Unemployment insurance (AV)",
+        "kv": "Health insurance (KV)",
+        "pv": "Care insurance (PV)"
+      },
+      "chart": {
+        "title": "Overview",
+        "subtitle": "Gross vs net and the main deduction buckets.",
+        "gross": "Gross",
+        "net": "Net",
+        "taxes": "Taxes",
+        "social": "Social",
+        "amountLabel": "Amount"
+      },
+      "disclaimer": "This calculator provides an estimate and may differ from your payslip depending on your exact situation."
     }
   }
 }

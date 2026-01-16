@@ -3,7 +3,8 @@
     "home": "Start",
     "about": "Über uns",
     "blog": "Blog",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "calculators": "Rechner"
   },
   "contactForm": {
     "title": "Kontaktieren Sie unser Beratungsteam",
@@ -249,6 +250,7 @@
     }
   },
   "calculators": {
+    "title": "Rechner",
     "compoundInterest": {
       "title": "Zinseszinsrechner",
       "subtitle": "Berechnen Sie, wie sich Ihr Investment über die Zeit entwickelt.",
@@ -348,6 +350,84 @@
         "line2": "Je unsicherer das Einkommen, desto wichtiger ist ein größerer Puffer."
       },
       "note": "Hinweis: Faustregel-Berechnung. Keine Rechts- oder Steuerberatung."
+    },
+    "grossNet": {
+      "title": "Brutto-Netto-Rechner",
+      "subtitle": "Schätze Steuern und Sozialabgaben basierend auf deinen Angaben und dem gewählten Jahr.",
+      "inputs": {
+        "year": "Berechnungsjahr",
+        "timeframe": "Lohnzahlungszeitraum",
+        "timeframePlaceholder": "Zeitraum wählen",
+        "timeframeMonthly": "Monatlich",
+        "timeframeYearly": "Jährlich",
+        "timeframeWeekly": "Wöchentlich",
+        "timeframeDaily": "Täglich",
+        "gross": "Bruttoeinkommen",
+        "taxClass": "Steuerklasse",
+        "taxClassPlaceholder": "Steuerklasse wählen",
+        "allowanceMonthly": "Freibetrag",
+        "allowanceAnnual": "Freibetrag",
+        "bundesland": "Bundesland",
+        "bundeslandPlaceholder": "Bundesland wählen",
+        "churchTax": "Kirchensteuer",
+        "churchTaxHint": "Nur relevant, wenn Kirchensteuerpflicht besteht.",
+        "birthYear": "Geburtsjahr",
+        "children": "Kinder (für Pflegeversicherung)",
+        "childrenHint": "Wird für PV-Abschläge/Zuschläge verwendet.",
+        "healthTitle": "Krankenversicherung",
+        "healthType": "Art",
+        "healthTypePlaceholder": "Art wählen",
+        "healthGkvGeneral": "Gesetzlich (allgemein 14,6%)",
+        "healthGkvReduced": "Gesetzlich (ermäßigt 14,0%)",
+        "healthPkv": "Privat (PKV)",
+        "gkvProvider": "Gesetzliche Krankenkasse",
+        "gkvProviderPlaceholder": "Kasse wählen",
+        "gkvProviderAverage": "Durchschnitt (Zusatzbeitrag manuell)",
+        "healthAddOnRate": "Zusatzbeitrag",
+        "pkvEmployeeMonthly": "PKV-Beitrag (AN-Anteil)",
+        "employerSubsidy": "Arbeitgeberzuschuss",
+        "employerSubsidyHint": "50% bis zum gesetzlichen Monatsmaximum.",
+        "pensionInsurance": "Rentenversicherungspflicht",
+        "pensionInsuranceHint": "Aktivieren, wenn RV-pflichtig.",
+        "umlageTitle": "Umlagen (Arbeitgeber)",
+        "umlageHint": "Optional: nur relevant für Arbeitgeberseite.",
+        "umlageU1": "U1-Satz",
+        "umlageU2": "U2-Satz"
+      },
+      "actions": {
+        "calculate": "Berechnen",
+        "reset": "Zurücksetzen"
+      },
+      "empty": {
+        "title": "Gib deine Daten ein, um dein Netto zu sehen",
+        "body": "Wir zeigen dir die Aufschlüsselung von Steuern und Sozialabgaben."
+      },
+      "results": {
+        "net": "Nettoeinkommen",
+        "fromGrossPrefix": "Ausgehend von Brutto:",
+        "taxesTitle": "Steuern",
+        "socialTitle": "Sozialabgaben",
+        "taxesTotal": "Steuern gesamt",
+        "socialTotal": "Sozialabgaben gesamt",
+        "totalDeductions": "Abzüge gesamt",
+        "wageTax": "Lohnsteuer",
+        "solidarity": "Solidaritätszuschlag",
+        "churchTax": "Kirchensteuer",
+        "rv": "Rentenversicherung (RV)",
+        "av": "Arbeitslosenversicherung (AV)",
+        "kv": "Krankenversicherung (KV)",
+        "pv": "Pflegeversicherung (PV)"
+      },
+      "chart": {
+        "title": "Übersicht",
+        "subtitle": "Die wichtigsten Abzugsblöcke.",
+        "gross": "Brutto",
+        "net": "Netto",
+        "taxes": "Steuern",
+        "social": "Sozialabgaben",
+        "amountLabel": "Betrag"
+      },
+      "disclaimer": "Dieser Rechner liefert eine Schätzung und kann je nach individueller Situation von der Lohnabrechnung abweichen."
     }
   }
 }
