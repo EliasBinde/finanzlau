@@ -1,12 +1,12 @@
 "use client";
 
 import * as React from "react";
-import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
+import type {Dictionary, Locale} from "@/app/[lang]/dictionaries";
 
-import { Card, CardContent } from "@/components/ui/card";
+import {Card, CardContent} from "@/components/ui/card";
 
-import { LineChart } from "@mui/x-charts/LineChart";
-import { BarChart } from "@mui/x-charts/BarChart";
+import {LineChart} from "@mui/x-charts/LineChart";
+import {BarChart} from "@mui/x-charts/BarChart";
 
 type Point = {
     year: number;
@@ -50,15 +50,15 @@ export function CompoundInterestCharts({
                     <div className="h-56 w-full">
                         <BarChart
                             xAxis={[
-                                { data: xYears, valueFormatter: (v) => `${v}y`, scaleType: "band" },
+                                {data: xYears, valueFormatter: (v) => `${v}y`, scaleType: "band"},
                             ]}
                             series={[
-                                { data: seriesContrib, stack: "total", label: t.results.contributions },
-                                { data: seriesInterest, stack: "total", label: t.results.interest },
+                                {data: seriesContrib, stack: "total", label: t.results.contributions},
+                                {data: seriesInterest, stack: "total", label: t.results.interest},
                             ]}
                             height={224}
-                            margin={{ left: 64, right: 16, top: 8, bottom: 32 }}
-                            yAxis={[{ valueFormatter: (v) => formatK(v, lang) }]}
+                            margin={{left: 64, right: 16, top: 8, bottom: 32}}
+                            yAxis={[{valueFormatter: (v: number) => formatK(v, lang)}]}
                         />
                     </div>
                 </CardContent>
@@ -71,11 +71,11 @@ export function CompoundInterestCharts({
 
                     <div className="h-48 w-full">
                         <LineChart
-                            xAxis={[{ data: xYears, valueFormatter: (v: number) => `${v}y` }]}
-                            series={[{ data: seriesTotal, label: t.results.final }]}
+                            xAxis={[{data: xYears, valueFormatter: (v: number) => `${v}y`}]}
+                            series={[{data: seriesTotal, label: t.results.final}]}
                             height={192}
-                            margin={{ left: 64, right: 16, top: 8, bottom: 32 }}
-                            yAxis={[{ valueFormatter: (v: number) => formatK(v, lang) }]}
+                            margin={{left: 64, right: 16, top: 8, bottom: 32}}
+                            yAxis={[{valueFormatter: (v: number) => formatK(v, lang)}]}
                         />
                     </div>
                 </CardContent>
