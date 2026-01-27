@@ -1,9 +1,9 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import "../globals.css";
-import { Navbar } from "@/components/navbar";
+import {Navbar} from "@/components/navbar";
 import {getDictionary, hasLocale} from "./dictionaries";
-import { notFound } from 'next/navigation'
+import {notFound} from 'next/navigation'
 import {locales} from "@/proxy";
 
 
@@ -23,24 +23,24 @@ export const metadata: Metadata = {
 export const viewport = "width=device-width, initial-scale=1";
 
 export async function generateStaticParams() {
-    return locales.map((lang) => ({ lang }));
+    return locales.map((lang) => ({lang}));
 }
 
-export default async function RootLayout({ children, params }: LayoutProps<"/[lang]">) {
-    const { lang } = await params;
+export default async function RootLayout({children, params}: LayoutProps<"/[lang]">) {
+    const {lang} = await params;
 
     if (!hasLocale(lang)) notFound();
 
-    const { dict } = await getDictionary(lang);
+    const {dict} = await getDictionary(lang);
 
 
     return (
-        <html lang={lang}  className={inter.variable}>
+        <html lang={lang} className={inter.variable}>
         <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <div className="flex min-h-screen flex-col">
             <header className="border-b">
                 <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-                    <Navbar lang={lang} dict={dict} />
+                    <Navbar lang={lang} dict={dict}/>
                 </div>
             </header>
 

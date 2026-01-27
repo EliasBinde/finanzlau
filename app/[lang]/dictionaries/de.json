@@ -19,7 +19,7 @@
         "placeholder": "Max Mustermann"
       },
       "email": {
-        "label": "Geschäftliche E-Mail",
+        "label": "E-Mail",
         "placeholder": "max.mustermann@firma.de"
       },
       "phone": {
@@ -169,10 +169,6 @@
     },
     "stats": {
       "items": [
-        {
-          "value": "26",
-          "label": "Jahre — modern & digital"
-        },
         {
           "value": "100%",
           "label": "Unabhängiger Ansatz"

@@ -1,12 +1,12 @@
-import { NextResponse } from "next/server";
-import { addDays, format, isSunday, parseISO, setHours, setMinutes } from "date-fns";
-import { formatInTimeZone, fromZonedTime } from "date-fns-tz";
-import { getCalendarClient } from "@/lib/google-calendar";
+import {NextResponse} from "next/server";
+import {addDays, format, isSunday, parseISO, setHours, setMinutes} from "date-fns";
+import {formatInTimeZone, fromZonedTime} from "date-fns-tz";
+import {getCalendarClient} from "@/lib/google-calendar";
 
 const TZ = "Europe/Berlin";
 
-const SLOT_MINUTES = 45;
-const BREAK_MINUTES = 15;
+const SLOT_MINUTES = 60;
+const BREAK_MINUTES = 30;
 const MIN_LEAD_TIME_MINUTES = 3 * 60;
 
 type Slot = {
@@ -31,13 +31,13 @@ function isBookableDay(d: Date): boolean {
 }
 
 function dayLocalRange(date: Date): { dayStartLocal: Date; dayEndLocal: Date } {
-    const dayStartLocal = setMinutes(setHours(date, 9), 0);
-    const dayEndLocal = setMinutes(setHours(date, 17), 0);
-    return { dayStartLocal, dayEndLocal };
+    const dayStartLocal = setMinutes(setHours(date, 8), 0);
+    const dayEndLocal = setMinutes(setHours(date, 17), 1);
+    return {dayStartLocal, dayEndLocal};
 }
 
 function makeSlotsForDay(dateLocal: Date, busy: Array<{ startMs: number; endMs: number }>): DaySlots {
-    const { dayStartLocal, dayEndLocal } = dayLocalRange(dateLocal);
+    const {dayStartLocal, dayEndLocal} = dayLocalRange(dateLocal);
 
     const slots: Slot[] = [];
     const stepMinutes = SLOT_MINUTES + BREAK_MINUTES;
@@ -69,10 +69,10 @@ function makeSlotsForDay(dateLocal: Date, busy: Array<{ startMs: number; endMs: 
         const startLocal = formatInTimeZone(slotStartUtc, TZ, "yyyy-MM-dd'T'HH:mmXXX");
         const endLocal = formatInTimeZone(slotEndUtc, TZ, "yyyy-MM-dd'T'HH:mmXXX");
 
-        slots.push({ startUtc, endUtc, startLocal, endLocal, available });
+        slots.push({startUtc, endUtc, startLocal, endLocal, available});
     }
 
-    return { date: format(dateLocal, "yyyy-MM-dd"), slots };
+    return {date: format(dateLocal, "yyyy-MM-dd"), slots};
 }
 
 export async function GET(req: Request) {
@@ -96,20 +96,20 @@ export async function GET(req: Request) {
     const first = dates[0] ?? fromDateLocal;
     const last = dates[dates.length - 1] ?? fromDateLocal;
 
-    const { dayStartLocal: rangeStartLocal } = dayLocalRange(first);
-    const { dayEndLocal: rangeEndLocal } = dayLocalRange(last);
+    const {dayStartLocal: rangeStartLocal} = dayLocalRange(first);
+    const {dayEndLocal: rangeEndLocal} = dayLocalRange(last);
 
     const timeMin = fromZonedTime(rangeStartLocal, TZ).toISOString();
     const timeMax = fromZonedTime(rangeEndLocal, TZ).toISOString();
 
-    const { calendar, calendarId } = getCalendarClient();
+    const {calendar, calendarId} = getCalendarClient();
 
     const fb = await calendar.freebusy.query({
         requestBody: {
             timeMin,
             timeMax,
             timeZone: TZ,
-            items: [{ id: calendarId }],
+            items: [{id: calendarId}],
         },
     });
 
@@ -118,7 +118,7 @@ export async function GET(req: Request) {
         .map((b) => {
             const s = b.start ? new Date(b.start).getTime() : NaN;
             const e = b.end ? new Date(b.end).getTime() : NaN;
-            return Number.isFinite(s) && Number.isFinite(e) ? { startMs: s, endMs: e } : null;
+            return Number.isFinite(s) && Number.isFinite(e) ? {startMs: s, endMs: e} : null;
         })
         .filter((x): x is { startMs: number; endMs: number } => x !== null);
 

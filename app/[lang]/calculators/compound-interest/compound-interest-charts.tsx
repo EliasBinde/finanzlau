@@ -39,7 +39,6 @@ export function CompoundInterestCharts({
 
     return (
         <div className="space-y-6">
-            {/* Stacked bars */}
             <Card>
                 <CardContent className="space-y-3 p-6">
                     <div>
@@ -64,7 +63,6 @@ export function CompoundInterestCharts({
                 </CardContent>
             </Card>
 
-            {/* Line */}
             <Card>
                 <CardContent className="space-y-3 p-6">
                     <p className="text-sm font-medium">{t.charts.trendTitle}</p>
