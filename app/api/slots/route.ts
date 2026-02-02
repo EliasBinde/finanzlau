@@ -45,11 +45,7 @@ function makeSlotsForDay(dateLocal: Date, busy: Array<{ startMs: number; endMs: 
     const nowMs = Date.now();
     const minStartMs = nowMs + MIN_LEAD_TIME_MINUTES * 60_000;
 
-    for (
-        let cursor = dayStartLocal;
-        cursor < dayEndLocal;
-        cursor = new Date(cursor.getTime() + stepMinutes * 60_000)
-    ) {
+    for (let cursor = dayStartLocal; cursor < dayEndLocal; cursor = new Date(cursor.getTime() + stepMinutes * 60_000)) {
         const slotStartUtc = fromZonedTime(cursor, TZ);
 
         if (slotStartUtc.getTime() < minStartMs) {
@@ -80,7 +76,8 @@ export async function GET(req: Request) {
     const fromParam = url.searchParams.get("from");
     const daysParam = url.searchParams.get("days");
 
-    const days = Math.min(Math.max(Number(daysParam ?? "7"), 1), 21);
+    // keep this below Google Calendar freebusy practical limits
+    const days = Math.min(Math.max(Number(daysParam ?? "40"), 1), 90);
 
     const todayLocal = formatInTimeZone(new Date(), TZ, "yyyy-MM-dd");
     const fromDateStr = fromParam ?? todayLocal;
@@ -104,14 +101,21 @@ export async function GET(req: Request) {
 
     const {calendar, calendarId} = getCalendarClient();
 
-    const fb = await calendar.freebusy.query({
-        requestBody: {
-            timeMin,
-            timeMax,
-            timeZone: TZ,
-            items: [{id: calendarId}],
-        },
-    });
+    let fb;
+    try {
+        fb = await calendar.freebusy.query({
+            requestBody: {
+                timeMin,
+                timeMax,
+                timeZone: TZ,
+                items: [{id: calendarId}],
+            },
+        });
+    } catch (e) {
+        // Return a helpful JSON error instead of throwing HTML
+        console.error(e);
+        return NextResponse.json({message: "Failed to query calendar availability."}, {status: 500});
+    }
 
     const busyRaw = fb.data.calendars?.[calendarId]?.busy ?? [];
     const busy = busyRaw

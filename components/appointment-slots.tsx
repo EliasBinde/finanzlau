@@ -1,14 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { format } from "date-fns";
-import { de, enUS } from "date-fns/locale";
+import {addDays, format, parseISO} from "date-fns";
 import {ChevronLeft, ChevronRight, RefreshCw} from "lucide-react";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { AppointmentBookingModal } from "@/components/appointment-booking-modal";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@/components/ui/card";
+import {Button} from "@/components/ui/button";
+import {AppointmentBookingModal} from "@/components/appointment-booking-modal";
+import type {Dictionary} from "@/app/[lang]/dictionaries";
 
 type Slot = {
     startUtc: string;
@@ -35,15 +34,12 @@ type SlotsResponse = {
 type Props = {
     dict: Dictionary;
     lang: "de" | "en";
+    /** window size to fetch; default 40 */
     days?: number;
+    /** initial start date (yyyy-MM-dd). if omitted, API uses "today" */
     from?: string;
 };
 
-function formatDayLabel(isoDate: string, lang: "de" | "en"): string {
-    const d = new Date(`${isoDate}T00:00:00`);
-    const locale = lang === "de" ? de : enUS;
-    return format(d, "EEEE, dd.MM.yyyy", { locale });
-}
 
 function formatTimeRange(slot: Slot): string {
     const start = slot.startLocal.slice(11, 16);
@@ -55,87 +51,141 @@ function interpolate(template: string, vars: Record<string, string | number>): s
     return template.replace(/\{(\w+)\}/g, (_, k: string) => String(vars[k] ?? ""));
 }
 
-export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
+function clamp(n: number, min: number, max: number) {
+    return Math.min(Math.max(n, min), max);
+}
+
+export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
     const t = dict.appointmentSlots;
+
+    const WINDOW_DAYS = days;
+    const CENTER_INDEX = Math.floor(WINDOW_DAYS / 2); // for 40 => 20
 
     const [data, setData] = React.useState<SlotsResponse | null>(null);
     const [loading, setLoading] = React.useState(true);
     const [err, setErr] = React.useState<string>("");
     const [dayIndex, setDayIndex] = React.useState(0);
+    const [pendingDate, setPendingDate] = React.useState<string | null>(null);
+
+
+    // dynamic window anchor (yyyy-MM-dd)
+    const [activeFrom, setActiveFrom] = React.useState<string | undefined>(from);
 
     const [modalOpen, setModalOpen] = React.useState(false);
     const [selectedSlot, setSelectedSlot] = React.useState<Slot | null>(null);
 
-    const load = React.useCallback(async () => {
-        setLoading(true);
-        setErr("");
+    const load = React.useCallback(
+        async (opts?: { preserveDayIndex?: boolean; desiredDate?: string }) => {
+            setLoading(true);
+            setErr("");
 
-        const params = new URLSearchParams();
-        params.set("days", String(days));
-        if (from) params.set("from", from);
+            const params = new URLSearchParams();
+            params.set("days", String(WINDOW_DAYS));
+            if (activeFrom) params.set("from", activeFrom);
 
-        let res: Response;
-        try {
-            res = await fetch(`/api/slots?${params.toString()}`, {
-                method: "GET",
-                headers: { Accept: "application/json" },
-                cache: "no-store",
-            });
-        } catch {
-            setErr(interpolate(t.errors.failedWithStatus, { status: "network" }));
-            setData(null);
-            setLoading(false);
-            return;
-        }
-
-        if (!res.ok) {
-            const contentType = res.headers.get("content-type") ?? "";
-            const status = res.status;
-
-            let message = interpolate(t.errors.failedWithStatus, { status });
-
-            if (contentType.includes("application/json")) {
-                try {
-                    const j = (await res.json()) as unknown;
-                    if (j && typeof j === "object") {
-                        const maybeMessage = (j as { message?: unknown }).message;
-                        if (typeof maybeMessage === "string" && maybeMessage.trim()) {
-                            message = maybeMessage;
-                        }
-                    }
-                } catch {
-                    // ignore
-                }
-            } else {
-                try {
-                    const text = (await res.text()).trim();
-                    const looksLikeHtml =
-                        text.startsWith("<!DOCTYPE") || text.startsWith("<html") || text.includes("<head") || text.includes("<body");
-                    if (!looksLikeHtml && text.length > 0 && text.length < 200) {
-                        message = text;
-                    }
-                } catch {
-                    // ignore
-                }
+            let res: Response;
+            try {
+                res = await fetch(`/api/slots?${params.toString()}`, {
+                    method: "GET",
+                    headers: {Accept: "application/json"},
+                    cache: "no-store",
+                });
+            } catch {
+                setErr(interpolate(t.errors.failedWithStatus, {status: "network"}));
+                setData(null);
+                setLoading(false);
+                return;
             }
 
-            if (status === 404) message = t.errors.endpointNotFound;
-            if (status === 500) message = t.errors.serverError;
+            if (!res.ok) {
+                const contentType = res.headers.get("content-type") ?? "";
+                const status = res.status;
 
-            setErr(message);
-            setData(null);
+                let message = interpolate(t.errors.failedWithStatus, {status});
+
+                if (contentType.includes("application/json")) {
+                    try {
+                        const j = (await res.json()) as unknown;
+                        if (j && typeof j === "object") {
+                            const maybeMessage = (j as { message?: unknown }).message;
+                            if (typeof maybeMessage === "string" && maybeMessage.trim()) {
+                                message = maybeMessage;
+                            }
+                        }
+                    } catch {
+                        // ignore
+                    }
+                } else {
+                    try {
+                        const text = (await res.text()).trim();
+                        const looksLikeHtml =
+                            text.startsWith("<!DOCTYPE") ||
+                            text.startsWith("<html") ||
+                            text.includes("<head") ||
+                            text.includes("<body");
+                        if (!looksLikeHtml && text.length > 0 && text.length < 200) {
+                            message = text;
+                        }
+                    } catch {
+                        // ignore
+                    }
+                }
+
+                if (status === 404) message = t.errors.endpointNotFound;
+                if (status === 500) message = t.errors.serverError;
+
+                setErr(message);
+                setData(null);
+                setLoading(false);
+                return;
+            }
+
+            const json = (await res.json()) as SlotsResponse;
+
+            setData(json);
+
+            if (pendingDate) {
+                const idx = json.data.findIndex((d) => d.date === pendingDate);
+                setDayIndex(idx >= 0 ? idx : clamp(CENTER_INDEX, 0, Math.max(json.data.length - 1, 0)));
+                setPendingDate(null);
+                setLoading(false);
+                return;
+            }
+
+            // If caller wants to land on a particular date, try to find it in the window.
+            if (opts?.desiredDate) {
+                const idx = json.data.findIndex((d) => d.date === opts.desiredDate);
+                if (idx >= 0) {
+                    setDayIndex(idx);
+                    setLoading(false);
+                    return;
+                }
+                // fallback: center
+                setDayIndex(clamp(CENTER_INDEX, 0, Math.max(json.data.length - 1, 0)));
+                setLoading(false);
+                return;
+            }
+
+            if (opts?.preserveDayIndex) {
+                // keep index, but clamp
+                setDayIndex((i) => clamp(i, 0, Math.max(json.data.length - 1, 0)));
+                setLoading(false);
+                return;
+            }
+
+            const firstWithFreeSlot = json.data.findIndex((d) => d.slots.some((s) => s.available));
+            setDayIndex(firstWithFreeSlot >= 0 ? firstWithFreeSlot : 0);
             setLoading(false);
-            return;
-        }
-
-        const json = (await res.json()) as SlotsResponse;
-
-        const firstWithFreeSlot = json.data.findIndex((d) => d.slots.some((s) => s.available));
-
-        setData(json);
-        setDayIndex(firstWithFreeSlot >= 0 ? firstWithFreeSlot : 0);
-        setLoading(false);
-    }, [days, from, t.errors.failedWithStatus, t.errors.endpointNotFound, t.errors.serverError]);
+        },
+        [
+            WINDOW_DAYS,
+            CENTER_INDEX,
+            activeFrom,
+            t.errors.failedWithStatus,
+            t.errors.endpointNotFound,
+            t.errors.serverError,
+        ]
+    );
 
     React.useEffect(() => {
         void load();
@@ -175,8 +225,35 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
     }, []);
 
     const onBooked = React.useCallback(() => {
-        void load();
+        void load({preserveDayIndex: true});
     }, [load]);
+
+    const onPickDate = React.useCallback(
+        (pickedIso: string) => {
+            if (!pickedIso) return;
+
+            const inWindowIdx = daysData.findIndex((d) => d.date === pickedIso);
+            if (inWindowIdx >= 0) {
+                setDayIndex(inWindowIdx);
+                return;
+            }
+
+            const picked = parseISO(pickedIso);
+            const newFrom = format(addDays(picked, -CENTER_INDEX), "yyyy-MM-dd");
+
+            setPendingDate(pickedIso);
+            setActiveFrom(newFrom); // <-- effect will load once with the NEW from
+        },
+        [CENTER_INDEX, daysData]
+    );
+
+    // Optional: if API returns `from`, keep activeFrom in sync (useful if user didn't pass `from` initially).
+    React.useEffect(() => {
+        if (data?.from && data.from !== activeFrom) {
+            setActiveFrom(data.from);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [data?.from]);
 
     return (
         <>
@@ -188,14 +265,9 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
 
                 <CardContent className="space-y-4">
                     <div className="flex items-center justify-between gap-3">
-                        <Button
-                            type="button"
-                            variant="outline"
-                            onClick={load}
-                            disabled={loading}
-                            aria-label={t.labels.reloadAria}
-                        >
-                            <RefreshCw className="h-4 w-4" aria-hidden="true" />
+                        <Button type="button" variant="outline" onClick={() => load()} disabled={loading}
+                                aria-label={t.labels.reloadAria}>
+                            <RefreshCw className="h-4 w-4" aria-hidden="true"/>
                             {loading ? t.actions.loading : t.actions.refresh}
                         </Button>
 
@@ -219,13 +291,8 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
                     ) : null}
 
                     {!loading && current ? (
-                        <div
-                            className="space-y-4"
-                            role="region"
-                            aria-label={t.labels.regionAria}
-                            tabIndex={0}
-                            onKeyDown={onKeyDown}
-                        >
+                        <div className="space-y-4" role="region" aria-label={t.labels.regionAria} tabIndex={0}
+                             onKeyDown={onKeyDown}>
                             <div className="grid grid-cols-[40px_1fr_40px] items-center gap-2">
                                 <Button
                                     type="button"
@@ -235,11 +302,18 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
                                     disabled={!canPrev}
                                     aria-label={t.labels.prevDayAria}
                                 >
-                                    <ChevronLeft className="h-4 w-4" aria-hidden="true" />
+                                    <ChevronLeft className="h-4 w-4" aria-hidden="true"/>
                                 </Button>
 
-                                <div className="text-center text-sm font-semibold" aria-live="polite">
-                                    {formatDayLabel(current.date, lang)}
+                                <div className="flex flex-col items-center gap-1">
+
+
+                                    <input
+                                        type="date"
+                                        className="h-9 rounded-md border bg-background px-2 text-sm"
+                                        value={current.date}
+                                        onChange={(e) => onPickDate(e.target.value)}
+                                    />
                                 </div>
 
                                 <Button
@@ -250,7 +324,7 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
                                     disabled={!canNext}
                                     aria-label={t.labels.nextDayAria}
                                 >
-                                    <ChevronRight className="h-4 w-4" aria-hidden="true" />
+                                    <ChevronRight className="h-4 w-4" aria-hidden="true"/>
                                 </Button>
                             </div>
 
@@ -260,8 +334,8 @@ export function AppointmentSlots({ dict, lang, days = 14, from }: Props) {
                                     const disabled = !slot.available;
 
                                     const ariaLabel = disabled
-                                        ? interpolate(t.slot.unavailableAria, { label })
-                                        : interpolate(t.slot.bookAria, { label });
+                                        ? interpolate(t.slot.unavailableAria, {label})
+                                        : interpolate(t.slot.bookAria, {label});
 
                                     return (
                                         <Button
