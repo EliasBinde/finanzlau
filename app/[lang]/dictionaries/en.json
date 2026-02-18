@@ -93,6 +93,7 @@
   "appointmentSlots": {
     "title": "Book an appointment",
     "description": "Choose a time slot. Unavailable slots are disabled.",
+    "freeNote": "Free of charge and with no obligation.",
     "actions": {
       "refresh": "Refresh",
       "loading": "Loading..."

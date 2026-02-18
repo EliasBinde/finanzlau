@@ -93,6 +93,7 @@
   "appointmentSlots": {
     "title": "Termin buchen",
     "description": "Wählen Sie einen Zeitslot. Nicht verfügbare Slots sind deaktiviert.",
+    "freeNote": "Das Gespräch ist kostenlos und unverbindlich.",
     "actions": {
       "refresh": "Aktualisieren",
       "loading": "Lädt…"

@@ -261,6 +261,7 @@ export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
                 <CardHeader>
                     <CardTitle>{t.title}</CardTitle>
                     <CardDescription>{t.description}</CardDescription>
+                    <p className="text-sm font-medium text-muted-foreground">{t.freeNote}</p>
                 </CardHeader>
 
                 <CardContent className="space-y-4">
