@@ -1,24 +1,24 @@
-import { notFound } from "next/navigation";
+import {notFound} from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { ArrowRight, CalendarDays } from "lucide-react";
-import { getDictionary, hasLocale, type Locale } from "../dictionaries";
-import { UrlObject } from "url";
+import {Badge} from "@/components/ui/badge";
+import {Button} from "@/components/ui/button";
+import {Card, CardContent} from "@/components/ui/card";
+import {ArrowRight, CalendarDays} from "lucide-react";
+import {getDictionary, hasLocale, type Locale} from "../dictionaries";
+import {UrlObject} from "url";
 
 function withLang(href: string, lang: Locale): UrlObject {
     const path = href === "/" ? `/${lang}` : `/${lang}${href}`;
-    return { pathname: path };
+    return {pathname: path};
 }
 
-export default async function Page({ params }: PageProps<'/[lang]/business-customers'>) {
-    const { lang } = await params;
+export default async function Page({params}: PageProps<'/[lang]/business-customers'>) {
+    const {lang} = await params;
 
     if (!hasLocale(lang)) notFound();
 
-    const { dict } = await getDictionary(lang);
+    const {dict} = await getDictionary(lang);
     const t = dict.businessCustomers;
 
     return (
@@ -58,7 +58,7 @@ export default async function Page({ params }: PageProps<'/[lang]/business-custo
 
                     <div className="overflow-hidden rounded-xl border bg-background/80">
                         <Image
-                            src="https://placekittens.com/1200/900"
+                            src="/bcs.jpg"
                             alt={t.hero.title}
                             width={1200}
                             height={900}
@@ -92,7 +92,8 @@ export default async function Page({ params }: PageProps<'/[lang]/business-custo
                         {t.pillars.items.map((item, idx) => (
                             <Card key={item.title} className="p-0">
                                 <CardContent className="flex gap-4 p-5 sm:p-6">
-                                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold">
+                                    <div
+                                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border text-sm font-semibold">
                                         {idx + 1}
                                     </div>
                                     <div>
@@ -132,8 +133,9 @@ export default async function Page({ params }: PageProps<'/[lang]/business-custo
             <section aria-label={t.cta.title} className="rounded-2xl border bg-card p-6 sm:p-8">
                 <div className="grid gap-6 lg:grid-cols-[1.3fr_auto] lg:items-end">
                     <div>
-                        <div className="inline-flex items-center gap-2 rounded-md bg-muted px-3 py-1 text-xs font-medium">
-                            <CalendarDays className="h-4 w-4" aria-hidden="true" />
+                        <div
+                            className="inline-flex items-center gap-2 rounded-md bg-muted px-3 py-1 text-xs font-medium">
+                            <CalendarDays className="h-4 w-4" aria-hidden="true"/>
                             <span>{t.cta.subtitle}</span>
                         </div>
                         <h2 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">{t.cta.title}</h2>
@@ -147,7 +149,7 @@ export default async function Page({ params }: PageProps<'/[lang]/business-custo
                         <Button asChild variant="outline">
                             <Link href={withLang("/calculators", lang)} className="flex items-center gap-2">
                                 {t.cta.secondary}
-                                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                                <ArrowRight className="h-4 w-4" aria-hidden="true"/>
                             </Link>
                         </Button>
                     </div>

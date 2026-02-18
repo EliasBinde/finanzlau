@@ -71,10 +71,11 @@ export function HomeHero({lang, dict}: Props) {
                 {/* IMAGE */}
                 <div className="relative overflow-hidden rounded-xl">
                     <Image
-                        src="/home/hero2.jpg"
+                        src="/home/hero2.png"
                         alt={hero.title}
                         width={1200}
                         height={900}
+                        sizes="(max-width: 1024px) 100vw, 50vw"
                         priority
                         className="h-[260px] w-full object-cover sm:h-[340px] lg:h-[420px]"
                     />
