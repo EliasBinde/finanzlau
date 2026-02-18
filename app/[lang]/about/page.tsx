@@ -42,7 +42,7 @@ export default async function Page({params}: PageProps<'/[lang]/about'>) {
                         alt={t.profile.imageAlt}
                         width={900}
                         height={1100}
-                        className="h-80 w-full object-cover object-[center_-40px] sm:h-105"
+                        className="h-[26rem] w-full object-cover object-[center_-40px] sm:h-105"
                         priority
                     />
                     <CardHeader className="px-6 pt-5 pb-2">

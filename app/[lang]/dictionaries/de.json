@@ -143,108 +143,89 @@
   },
   "home": {
     "hero": {
-      "badge": "Unabhängige Beratung",
-      "badge2": "Versicherung & Finanzen",
-      "title": "Klarer Plan. Ruhiges Gefühl.",
-      "subtitle": "Ich helfe Ihnen, Versicherungen und Finanzprodukte so zu strukturieren, dass sie zu Ihrem Leben passen — verständlich, effizient und ohne unnötigen Ballast.",
-      "primaryCta": "Termin buchen",
-      "secondaryCta": "Mehr über mich",
-      "disclaimer": "Hinweis: Keine Rechts- oder Steuerberatung. Ich unterstütze bei Auswahl, Struktur und Umsetzung passender Lösungen.",
-      "cards": {
-        "card1Title": "Schneller Start",
-        "card1Desc": "In 15 Minuten zur Orientierung",
-        "card1Body": "Kurzer Check Ihrer Situation, Ziele und Prioritäten. Danach wissen Sie, was sinnvoll ist — und was nicht.",
-        "card2Title": "Transparente Empfehlung",
-        "card2Desc": "So wenig wie möglich, so viel wie nötig",
-        "card2Body": "Klare Vorschläge, verständliche Begründung, und eine saubere Umsetzung — ohne Fachchinesisch.",
-        "card3Title": "Worauf wir typischerweise schauen",
-        "card3Desc": "Ein Überblick über häufige Bausteine",
-        "card3Bullets": [
-          "Absicherung von Einkommen & Familie",
-          "Altersvorsorge & Vermögensaufbau",
-          "Haftpflicht, Hausrat, Rechtsschutz",
-          "PKV / GKV-Optimierung (je nach Fall)",
-          "Unternehmens- & Selbstständigenlösungen",
-          "Bestehende Verträge: aufräumen & optimieren"
-        ]
-      }
+      "badge": "Unabhängige Finanzberatung",
+      "badge2": "Düsseldorf & deutschlandweit",
+      "title": "Finanzberatung mit Struktur für Privatkunden und Unternehmen",
+      "subtitle": "FINANZLAU steht für unabhängige Finanz- und Unternehmensberatung. Wir unterstützen Privatpersonen, Selbstständige, Unternehmer und Geschäftsführer bei Vermögensaufbau, Altersvorsorge, Absicherung, Finanzierung und strategischer Finanzplanung.",
+      "primaryCta": "Beratungsgespräch anfragen",
+      "secondaryCta": "Mehr über FINANZLAU",
+      "disclaimer": "Unabhängige Beratung ohne Bindung an Banken oder Versicherungen."
     },
     "stats": {
       "items": [
         {
           "value": "100%",
-          "label": "Unabhängiger Ansatz"
+          "label": "unabhängige Finanzberatung"
         },
         {
-          "value": "1:1",
-          "label": "Beratung ohne Umwege"
+          "value": "Privat + B2B",
+          "label": "Beratung für Privatkunden und Geschäftskunden"
+        },
+        {
+          "value": "Düsseldorf",
+          "label": "persönlich vor Ort und digital deutschlandweit"
         }
       ]
     },
     "services": {
-      "title": "So arbeiten wir zusammen",
-      "subtitle": "Ein einfacher Prozess, der schnell Klarheit bringt.",
+      "title": "Leistungen im Überblick",
+      "subtitle": "Ganzheitliche Beratung statt Einzelprodukt-Verkauf.",
       "items": [
         {
-          "title": "Analyse",
-          "desc": "Ziele, Risiken, Bestand",
-          "body": "Wir klären Ausgangslage und Prioritäten. Keine Endlos-Meetings — nur das, was wirklich wichtig ist."
+          "title": "Privatkunden-Beratung",
+          "desc": "Vermögen, Vorsorge, Absicherung",
+          "body": "Wir entwickeln strukturierte Konzepte für Vermögensaufbau, Altersvorsorge, Risikoabsicherung, Immobilienplanung sowie Anschlussfinanzierung und Umschuldung."
         },
         {
-          "title": "Konzept",
-          "desc": "Optionen & Empfehlungen",
-          "body": "Sie bekommen konkrete Optionen mit klaren Vor- und Nachteilen. Entscheidungen bleiben bei Ihnen."
+          "title": "Beratung für Unternehmer & Geschäftsführer",
+          "desc": "Strategisch und wirtschaftlich fundiert",
+          "body": "Wir begleiten bei betrieblichen Versorgungssystemen, Geschäftsführerfinanzversorgung, Finanzierungsentscheidungen, Investitionsvorhaben und der Verzahnung privater und betrieblicher Finanzstrukturen."
         },
         {
-          "title": "Umsetzung",
-          "desc": "Sauber, dokumentiert, nachvollziehbar",
-          "body": "Ich kümmere mich um die Umsetzung und sorge dafür, dass alles verständlich dokumentiert ist."
+          "title": "Optimierung & Umsetzung",
+          "desc": "Steuerlich sinnvoll und praktisch umsetzbar",
+          "body": "Bestehende Strukturen werden auf Optimierungspotenzial geprüft. Wir berücksichtigen Steueroptimierung und die Nutzung staatlicher Förderprogramme, sofern sie zur Strategie passen."
         }
       ]
     },
     "trust": {
-      "title": "Wert statt Hype",
-      "subtitle": "Beratung, die langfristig stabil bleibt.",
+      "title": "Vertrauen durch Klarheit und Verantwortung",
+      "subtitle": "Beratung, die nachvollziehbar ist und langfristig trägt.",
       "quotes": [
         {
-          "name": "Kundin aus Berlin",
-          "role": "Angestellte",
-          "quote": "Endlich habe ich verstanden, was ich wirklich brauche — und was ich mir sparen kann."
+          "name": "Mandantin aus Düsseldorf",
+          "role": "Privatkunden-Beratung",
+          "quote": "Die Beratung war klar strukturiert und verständlich. Ich wusste jederzeit, warum welche Empfehlung sinnvoll ist."
         },
         {
-          "name": "Kunde aus NRW",
-          "role": "Selbstständig",
-          "quote": "Sehr strukturiert, schnell, und ohne Verkaufsdruck. Genau so sollte Beratung sein."
+          "name": "Mandant aus NRW",
+          "role": "Unternehmer",
+          "quote": "Wir konnten private und betriebliche Themen endlich sauber zusammenführen und fundierte Entscheidungen treffen."
         },
         {
-          "name": "Kundin aus Hamburg",
-          "role": "Berufseinsteigerin",
-          "quote": "Klare Empfehlung, sauber umgesetzt. Das war in einem Termin erledigt."
-        },
-        {
-          "name": "Kunde aus Mettmann",
-          "role": "Angestellter",
-          "quote": "Alles top"
+          "name": "Geschäftsführer aus Köln",
+          "role": "Geschäftskunden-Beratung",
+          "quote": "Besonders wertvoll war der ganzheitliche Blick auf bAV, Finanzierung und Unternehmensstruktur."
         }
       ]
     },
     "cta": {
-      "title": "Bereit für Klarheit?",
-      "subtitle": "Buchen Sie einen Termin oder stöbern Sie in hilfreichen Beiträgen.",
-      "primary": "Termin buchen",
+      "title": "Jetzt unabhängige Finanzberatung anfragen",
+      "subtitle": "Persönlich in Düsseldorf oder digital deutschlandweit.",
+      "primary": "Kontakt aufnehmen",
       "secondary": "Zum Blog"
     },
     "images": {
-      "heroAlt": "Beratung – Übersicht & Klarheit",
-      "serviceAlt": "Beratung – Beispielbild",
-      "asideAlt": "Beratung – Details",
-      "ctaAlt": "Termin – Beispielbild"
+      "heroAlt": "Unabhängige Finanzberatung für Privatkunden und Unternehmen",
+      "serviceAlt": "Strategische Finanzberatung und Unternehmensberatung",
+      "asideAlt": "Beratung mit Struktur und Marktüberblick",
+      "ctaAlt": "Beratungsgespräch mit FINANZLAU"
     },
     "aside": {
-      "title": "Kurz & klar",
-      "subtitle": "Weniger Komplexität, mehr Wirkung.",
-      "body": "Mock-Text: Hier kann später ein kurzer Absatz stehen, der Vertrauen aufbaut (Arbeitsweise, Werte, Fokus).",
-      "cta": "Termin buchen"
+      "title": "Klar. Unabhängig. Umsetzbar.",
+      "subtitle": "Finanzentscheidungen mit Substanz.",
+      "body": "Wir verbinden Fachwissen, Marktüberblick und persönliche Verantwortung zu einem Beratungsansatz, der langfristig funktioniert.",
+      "cta": "Kontakt aufnehmen"
     }
   },
   "calculators": {
@@ -613,7 +594,7 @@
       "title": "Finanzlau steht für unabhängige Finanz- und Unternehmensberatung mit strategischem Anspruch.",
       "intro": [
         "Unser Sitz ist in Düsseldorf. Von hier aus betreuen wir Mandanten in ganz Deutschland, persönlich vor Ort oder digital.",
-        "Inhaber und verantwortlicher Ansprechpartner ist Maximilian Fanslau. Als freier Finanzmakler sind wir an keine Bank oder Versicherung gebunden. Wir vertreten ausschließlich die Interessen unserer Mandanten und greifen auf den gesamten Finanzmarkt zu, um individuelle und tragfähige Lösungen zu entwickeln.",
+        "Inhaber und verantwortlicher Ansprechpartner ist Maximilian Fanslau. Wir vertreten ausschließlich die Interessen unserer Mandanten und greifen auf den gesamten Finanzmarkt zu, um individuelle und tragfähige Lösungen zu entwickeln.",
         "Unser Ansatz basiert auf einer ganzheitlichen Beratung. Statt einzelne Produkte in den Vordergrund zu stellen, entwickeln wir strukturierte Konzepte, die Vermögensaufbau, Altersvorsorge, Absicherung, Immobilienplanung, Finanzierungen und steuerliche Aspekte sinnvoll miteinander verbinden."
       ]
     },

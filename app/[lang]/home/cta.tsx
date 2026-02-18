@@ -81,7 +81,7 @@ export function HomeCta({ lang, dict }: Props) {
                         <div className="lg:col-span-5">
                             <div className="relative overflow-hidden rounded-xl border bg-muted">
                                 <Image
-                                    src={`https://placekittens.com/${1200}/${700}`}
+                                    src="/home/cta.jpg"
                                     alt={dict.home.images.ctaAlt}
                                     width={900}
                                     height={700}

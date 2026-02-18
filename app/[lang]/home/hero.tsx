@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
+import {Badge} from "@/components/ui/badge";
+import {Button} from "@/components/ui/button";
+import type {Dictionary} from "@/app/[lang]/dictionaries";
 import {UrlObject} from "url";
 
 type Props = {
@@ -12,10 +12,10 @@ type Props = {
 
 function withLang(href: string, lang: string): UrlObject {
     const path = href === "/" ? `/${lang}` : `/${lang}${href}`;
-    return { pathname: path };
+    return {pathname: path};
 }
 
-export function HomeHero({ lang, dict }: Props) {
+export function HomeHero({lang, dict}: Props) {
     const hero = dict.home.hero;
 
     const badges = [
@@ -71,7 +71,7 @@ export function HomeHero({ lang, dict }: Props) {
                 {/* IMAGE */}
                 <div className="relative overflow-hidden rounded-xl">
                     <Image
-                        src="https://placekittens.com/1200/900"
+                        src="/home/hero2.jpg"
                         alt={hero.title}
                         width={1200}
                         height={900}

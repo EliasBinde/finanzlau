@@ -26,7 +26,7 @@ export function HomeServices({ dict }: Props) {
                         >
                             <CardHeader className="p-0">
                                 <Image
-                                    src={`https://placekittens.com/${520 + idx}/${390 + idx}`}
+                                    src={`/home/service-${idx + 1}.jpg`}
                                     alt={dict.home.images.serviceAlt}
                                     width={520}
                                     height={390}

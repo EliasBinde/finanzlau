@@ -143,108 +143,89 @@
   },
   "home": {
     "hero": {
-      "badge": "Independent advisory",
-      "badge2": "Insurance & Finance",
-      "title": "Clear plan. Calm confidence.",
-      "subtitle": "I help you structure insurance and financial products to fit your life — simple, efficient, and without unnecessary complexity.",
-      "primaryCta": "Book a call",
-      "secondaryCta": "About me",
-      "disclaimer": "Note: No legal or tax advice. I support you with selection, structure, and implementation of suitable solutions.",
-      "cards": {
-        "card1Title": "Fast start",
-        "card1Desc": "Get clarity in 15 minutes",
-        "card1Body": "A quick check of your situation, goals, and priorities. You’ll know what makes sense — and what doesn’t.",
-        "card2Title": "Transparent recommendations",
-        "card2Desc": "As little as possible, as much as needed",
-        "card2Body": "Clear proposals, understandable reasoning, and clean execution — no jargon.",
-        "card3Title": "What we typically look at",
-        "card3Desc": "A quick overview of common building blocks",
-        "card3Bullets": [
-          "Income & family protection",
-          "Retirement & wealth building",
-          "Liability, household, legal protection",
-          "Health insurance optimization (case-dependent)",
-          "Solutions for freelancers & entrepreneurs",
-          "Existing policies: clean-up & optimization"
-        ]
-      }
+      "badge": "Independent Financial Advisory",
+      "badge2": "Dusseldorf & across Germany",
+      "title": "Structured financial advisory for private and business clients",
+      "subtitle": "FINANZLAU provides independent financial and business advisory services. We support private clients, self-employed professionals, entrepreneurs, and managing directors with wealth building, retirement planning, risk protection, financing, and strategic financial decisions.",
+      "primaryCta": "Request a consultation",
+      "secondaryCta": "Learn more about FINANZLAU",
+      "disclaimer": "Independent advisory without ties to banks or insurance providers."
     },
     "stats": {
       "items": [
         {
           "value": "100%",
-          "label": "independent approach"
+          "label": "independent financial advisory"
         },
         {
-          "value": "1:1",
-          "label": "direct advisory"
+          "value": "Private + B2B",
+          "label": "advisory for private and business customers"
+        },
+        {
+          "value": "Dusseldorf",
+          "label": "in-person locally and digitally across Germany"
         }
       ]
     },
     "services": {
-      "title": "How we work together",
-      "subtitle": "A simple process that delivers clarity fast.",
+      "title": "Core advisory areas",
+      "subtitle": "Holistic advisory instead of single-product selling.",
       "items": [
         {
-          "title": "Review",
-          "desc": "Goals, risks, current setup",
-          "body": "We define your situation and priorities. No endless meetings — only what truly matters."
+          "title": "Private client advisory",
+          "desc": "Wealth, retirement, and protection",
+          "body": "We build structured concepts for wealth accumulation, retirement planning, risk protection, real estate planning, refinancing, and debt restructuring."
         },
         {
-          "title": "Plan",
-          "desc": "Options & recommendations",
-          "body": "You get concrete options with clear pros/cons. Decisions stay with you."
+          "title": "Advisory for entrepreneurs and managing directors",
+          "desc": "Strategic and economically sound",
+          "body": "We support business clients with corporate benefit structures, executive financial provision, financing decisions, investment projects, and alignment of private and business financial structures."
         },
         {
-          "title": "Implementation",
-          "desc": "Clean, documented, understandable",
-          "body": "I handle the execution and make sure everything is clearly documented."
+          "title": "Optimization and implementation",
+          "desc": "Tax-aware and practical",
+          "body": "Existing structures are reviewed for optimization potential. We include tax optimization and relevant public funding programs where they support the overall strategy."
         }
       ]
     },
     "trust": {
-      "title": "Value over hype",
-      "subtitle": "Advice that stays stable long-term.",
+      "title": "Trust through clarity and responsibility",
+      "subtitle": "Advice that is transparent and built to last.",
       "quotes": [
         {
-          "name": "Client from Berlin",
-          "role": "Employee",
-          "quote": "For the first time I understood what I actually need — and what I can skip."
+          "name": "Client from Dusseldorf",
+          "role": "Private advisory",
+          "quote": "The advisory process was clearly structured and easy to understand. I always knew why a recommendation made sense."
         },
         {
           "name": "Client from NRW",
-          "role": "Self-employed",
-          "quote": "Very structured, fast, and zero pressure. That’s how advisory should be."
+          "role": "Entrepreneur",
+          "quote": "We finally aligned private and business topics properly and were able to make better financial decisions."
         },
         {
-          "name": "Client from Hamburg",
-          "role": "Early-career",
-          "quote": "Clear recommendation, clean implementation. Done in one appointment."
-        },
-        {
-          "name": "Client from Mettmann",
-          "role": "Employee",
-          "quote": "Everything top"
+          "name": "Managing Director from Cologne",
+          "role": "Business advisory",
+          "quote": "The holistic perspective on occupational pensions, financing, and company structure was especially valuable."
         }
       ]
     },
     "cta": {
-      "title": "Ready for clarity?",
-      "subtitle": "Book an appointment or explore helpful articles.",
-      "primary": "Book a call",
+      "title": "Request independent financial advisory now",
+      "subtitle": "In person in Dusseldorf or digitally across Germany.",
+      "primary": "Get in touch",
       "secondary": "Go to blog"
     },
     "images": {
-      "heroAlt": "Advisory – clarity and overview",
-      "serviceAlt": "Advisory – example image",
-      "asideAlt": "Advisory – details",
-      "ctaAlt": "Appointment – example image"
+      "heroAlt": "Independent financial advisory for private and business clients",
+      "serviceAlt": "Strategic financial and business advisory",
+      "asideAlt": "Advisory with structure and market overview",
+      "ctaAlt": "Consultation with FINANZLAU"
     },
     "aside": {
-      "title": "Short & clear",
-      "subtitle": "Less complexity, more impact.",
-      "body": "Mock copy: this can later be a short trust-building paragraph (approach, values, focus).",
-      "cta": "Book a call"
+      "title": "Clear. Independent. Actionable.",
+      "subtitle": "Financial decisions with substance.",
+      "body": "We combine technical expertise, market overview, and personal responsibility into an advisory approach designed for long-term impact.",
+      "cta": "Get in touch"
     }
   },
   "calculators": {

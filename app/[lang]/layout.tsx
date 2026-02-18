@@ -19,6 +19,11 @@ export const metadata: Metadata = {
         template: "%s · FINANZLAU",
     },
     description: "Professional financial advisory services tailored to your needs.",
+    icons: {
+        icon: "/favicon.ico",
+        shortcut: "/favicon.ico",
+        apple: "/favicon.ico",
+    },
 };
 export const viewport = "width=device-width, initial-scale=1";
 
