@@ -1,8 +1,8 @@
-import { notFound } from "next/navigation";
-import { hasLocale } from "../dictionaries";
+import {notFound} from "next/navigation";
+import {hasLocale} from "../dictionaries";
 
-export default async function Page({ params }: PageProps<'/[lang]/impressum'>) {
-    const { lang } = await params;
+export default async function Page({params}: PageProps<'/[lang]/impressum'>) {
+    const {lang} = await params;
     if (!hasLocale(lang)) notFound();
 
     return (
@@ -12,22 +12,23 @@ export default async function Page({ params }: PageProps<'/[lang]/impressum'>) {
             <section className="space-y-3 text-sm leading-relaxed">
                 <p>
                     Maximilian Henning Fanslau
-                    <br />
+                    <br/>
+                    Ginsterweg 22
+                    <br/>
+                    40822 Mettmann
+                    <br/>
                     Gebundener Versicherungsvertreter gemaess § 34d Abs. 7 GewO
+
                 </p>
 
                 <p>
                     Taetig im Auftrag der
-                    <br />
+                    <br/>
                     die Bayerische
-                    <br />
+                    <br/>
                     und
-                    <br />
+                    <br/>
                     compexx Finanz AG
-                    <br />
-                    Ginsterweg 22
-                    <br />
-                    40822 Mettmann
                 </p>
             </section>
 
@@ -35,7 +36,7 @@ export default async function Page({ params }: PageProps<'/[lang]/impressum'>) {
                 <h2 className="text-xl font-semibold">Kontakt</h2>
                 <p>
                     Telefon: +49 171 3422274
-                    <br />
+                    <br/>
                     E-Mail: info@finanzlau.de
                 </p>
             </section>
@@ -61,31 +62,31 @@ export default async function Page({ params }: PageProps<'/[lang]/impressum'>) {
 
                 <p>
                     Berufsbezeichnung:
-                    <br />
+                    <br/>
                     Selbststaendiger Handelsvertreter
                 </p>
 
                 <p>
                     Zustaendige Kammer:
-                    <br />
+                    <br/>
                     Industrie- und Handelskammer zu Duesseldorf
-                    <br />
+                    <br/>
                     Ernst-Schneider-Platz 1
-                    <br />
+                    <br/>
                     40212 Duesseldorf
                 </p>
 
                 <p>
                     Verliehen in:
-                    <br />
+                    <br/>
                     Deutschland
                 </p>
 
                 <p>
                     Es gelten folgende berufsrechtliche Regelungen:
-                    <br />§ 34d Gewerbeordnung (GewO) Versicherungsvermittlungsverordnung (VersVermV)
+                    <br/>§ 34d Gewerbeordnung (GewO) Versicherungsvermittlungsverordnung (VersVermV)
                     Versicherungsvertragsgesetz (VVG)
-                    <br />
+                    <br/>
                     einsehbar unter:{" "}
                     <a
                         href="http://www.gesetze-im-internet.de"

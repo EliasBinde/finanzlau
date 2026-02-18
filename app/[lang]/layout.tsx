@@ -6,6 +6,7 @@ import {Navbar} from "@/components/navbar";
 import {getDictionary, hasLocale} from "./dictionaries";
 import {notFound} from 'next/navigation'
 import {locales} from "@/proxy";
+import {UrlObject} from "url";
 
 
 const montserrat = Montserrat({
@@ -32,8 +33,9 @@ export async function generateStaticParams() {
     return locales.map((lang) => ({lang}));
 }
 
-function withLangPath(lang: string, href: string): string {
-    return href === "/" ? `/${lang}` : `/${lang}${href}`;
+function withLangPath(lang: string, href: string): UrlObject {
+    const path = href === "/" ? `/${lang}` : `/${lang}${href}`;
+    return {pathname: path};
 }
 
 export default async function RootLayout({children, params}: LayoutProps<"/[lang]">) {
