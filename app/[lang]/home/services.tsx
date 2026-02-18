@@ -1,14 +1,24 @@
-import type { Dictionary } from "@/app/[lang]/dictionaries";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { ArrowRight } from "lucide-react";
+import type {Dictionary, Locale} from "@/app/[lang]/dictionaries";
+import {Card, CardContent, CardHeader} from "@/components/ui/card";
+import {ArrowRight} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import {UrlObject} from "url";
 
 type Props = {
     dict: Dictionary;
+    lang: Locale;
 };
 
-export function HomeServices({ dict }: Props) {
-    const { title, subtitle, items } = dict.home.services;
+function withLang(href: string, lang: Locale): UrlObject {
+    const path = href === "/" ? `/${lang}` : `/${lang}${href}`;
+    return {pathname: path};
+}
+
+export function HomeServices({dict, lang}: Props) {
+    const {title, subtitle, items} = dict.home.services;
+    const hrefs = ["/contact", "/business-customers", "/contact"] as const;
+    const ctaLabels = ["Kontakt aufnehmen", "Mehr erfahren", "Kontakt aufnehmen"] as const;
 
     return (
         <section aria-label={title} className="w-full py-12 sm:py-16">
@@ -43,10 +53,13 @@ export function HomeServices({ dict }: Props) {
 
                                 <p className="text-sm leading-relaxed text-muted-foreground">{item.body}</p>
 
-                                <div className="mt-auto flex items-center gap-2 pt-4 text-sm font-medium text-primary">
-                                    <span>Mehr erfahren</span>
-                                    <ArrowRight className="h-4 w-4" />
-                                </div>
+                                <Link
+                                    href={withLang(hrefs[idx] ?? "/contact", lang)}
+                                    className="mt-auto flex items-center gap-2 pt-4 text-sm font-medium text-primary hover:underline"
+                                >
+                                    <span>{ctaLabels[idx] ?? "Kontakt aufnehmen"}</span>
+                                    <ArrowRight className="h-4 w-4"/>
+                                </Link>
                             </CardContent>
                         </Card>
                     ))}

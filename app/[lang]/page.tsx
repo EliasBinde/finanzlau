@@ -17,7 +17,7 @@ export default async function Page({ params }: PageProps) {
         <div className="flex flex-col gap-10 md:gap-4">
             <HomeHero lang={lang} dict={dict} />
             <HomeStats dict={dict} />
-            <HomeServices dict={dict} />
+            <HomeServices dict={dict} lang={language} />
             <HomeTrust dict={dict} />
             <HomeCta dict={dict} lang={language} />
         </div>
