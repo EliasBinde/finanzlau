@@ -30,6 +30,7 @@ export function proxy(request: NextRequest) {
 
 export const config = {
     matcher: [
-        "/((?!_next|api|favicon.ico|robots.txt|sitemap.xml|logo.svg).*)",
+        // Exclude Next internals, APIs, and all static files in /public (e.g. /max.jpg, /logo.svg).
+        "/((?!_next|api|.*\\..*).*)",
     ],
 };

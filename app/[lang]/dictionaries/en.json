@@ -3,8 +3,10 @@
     "home": "Home",
     "about": "About us",
     "blog": "Blog",
+    "calculators": "Calculators",
+    "career": "Career",
     "contact": "Contact",
-    "calculators": "Calculators"
+    "businessCustomers": "Business Customers"
   },
   "contactForm": {
     "title": "Contact our advisory team",
@@ -424,6 +426,223 @@
         "amountLabel": "Amount"
       },
       "disclaimer": "This calculator provides an estimate and may differ from your payslip depending on your exact situation."
+    },
+    "overview": {
+      "badge": "Tools",
+      "subtitle": "Pick a calculator and get a solid estimate for your financial planning in just a few steps.",
+      "cardCta": "Open calculator"
+    }
+  },
+  "career": {
+    "hero": {
+      "badges": [
+        "Careers",
+        "For career starters",
+        "For industry insiders"
+      ],
+      "title": "Build your advisory career at FINANZLAU",
+      "subtitle": "We are looking for motivated career starters and experienced industry insiders who value responsibility, structure, and true client focus. This includes internal training and education, webinars, monthly seminars, and selected external conferences.",
+      "primaryCta": "Register interest",
+      "secondaryCta": "Have an intro call",
+      "disclaimer": "We work independently, client-first, and with clear quality standards in advisory work."
+    },
+    "stats": [
+      {
+        "value": "1:1",
+        "label": "onboarding and development with direct sparring"
+      },
+      {
+        "value": "Clear",
+        "label": "structured processes instead of sales chaos"
+      },
+      {
+        "value": "Long-term",
+        "label": "built around sustainable client relationships"
+      }
+    ],
+    "pillars": {
+      "title": "What to expect on the career path",
+      "subtitle": "A practical framework for entry, progression, and responsible client work.",
+      "items": [
+        {
+          "title": "Structured entry",
+          "body": "Career starters get a clear roadmap for advisory conversations, needs analysis, documentation, and reliable day-to-day execution."
+        },
+        {
+          "title": "Continuous training and education",
+          "body": "You grow through internal training programs, webinars, monthly seminars, and external conferences to continuously strengthen your technical and advisory skillset."
+        },
+        {
+          "title": "Client-first advisory work",
+          "body": "The focus is on sustainable solutions across the full market, not product quotas from single providers."
+        }
+      ]
+    },
+    "roadmap": {
+      "title": "Orientation for the first months",
+      "items": [
+        "Month 1: Learn our working style, advisory process, and quality standards.",
+        "Month 2: Run first conversations independently with close feedback.",
+        "Month 3: Join internal training sessions, webinars, and monthly seminars.",
+        "From month 4: Expand responsibility and specialization, including targeted participation in external conferences."
+      ]
+    },
+    "quotes": {
+      "title": "Typical profiles that fit well",
+      "subtitle": "Practice-based examples for entering the field or making your next career move.",
+      "items": [
+        {
+          "quote": "As a career starter, I want a setting with clear structure, high standards, and honest feedback rather than pure sales rhetoric.",
+          "name": "Anna K.",
+          "role": "Career starter, financial advisory"
+        },
+        {
+          "quote": "As an industry insider, I want to use my experience in an independent advisory setup that consistently puts client interests first.",
+          "name": "Murat B.",
+          "role": "Industry insider, financial advisory"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Could this be your next career step?",
+      "subtitle": "Careers at FINANZLAU",
+      "body": "If you are a career starter or industry insider who wants to take responsibility and keep developing professionally and personally, we would like to hear from you. You can expect a freely negotiable base salary, uncapped commissions, and a young, dynamic team. Our development culture combines internal training and education, webinars, monthly seminars, and external conferences. With strong performance, you can also expect internal incentive trips and additional forms of recognition.",
+      "primary": "Open contact form",
+      "secondary": "Browse calculators"
+    }
+  },
+  "businessCustomers": {
+    "hero": {
+      "badges": [
+        "Business Customers",
+        "Independent Financial Advisory",
+        "Dusseldorf & across Germany"
+      ],
+      "title": "Financial and business advisory for business customers",
+      "subtitle": "FINANZLAU supports self-employed professionals, entrepreneurs, managing directors, and SMEs with sound financial decisions. Independent, practical, and focused on sustainable outcomes including executive financial provision, tax optimization, and the use of public funding programs.",
+      "primaryCta": "Request a consultation",
+      "secondaryCta": "Send business inquiry",
+      "disclaimer": "Independent advisory without ties to banks or insurance providers."
+    },
+    "statsAriaLabel": "Business advisory focus",
+    "stats": [
+      {
+        "value": "SME",
+        "label": "clear focus on self-employed professionals and companies"
+      },
+      {
+        "value": "bAV + Exec",
+        "label": "occupational pensions and executive financial provision"
+      },
+      {
+        "value": "Funding",
+        "label": "tax optimization and public funding usage"
+      }
+    ],
+    "pillars": {
+      "title": "How we support business customers",
+      "subtitle": "Strategic, understandable, and directly applicable in day-to-day business.",
+      "items": [
+        {
+          "title": "Occupational pensions (bAV)",
+          "body": "We design and structure occupational pension setups that fit company size, workforce needs, and employer goals while remaining practical to implement."
+        },
+        {
+          "title": "Executive financial provision",
+          "body": "For managing directors, we build sustainable provision concepts that align business objectives, personal planning, and long-term security."
+        },
+        {
+          "title": "Tax optimization",
+          "body": "We review financial decisions with tax efficiency in mind so structures are not only technically sound but also economically effective."
+        },
+        {
+          "title": "Use of public funding",
+          "body": "We identify relevant funding programs and integrate suitable public incentives into financing and business planning."
+        },
+        {
+          "title": "Financing, investment, and growth",
+          "body": "Whether it is investment planning, commercial financing, or expansion, we structure options, evaluate scenarios, and support economically sound decisions."
+        },
+        {
+          "title": "Financial structure for owners and management",
+          "body": "We align private and business financial topics and build a clear steering model for sustainable company development."
+        }
+      ]
+    },
+    "roadmap": {
+      "title": "Typical start of collaboration",
+      "items": [
+        "Step 1: Assess starting point, business goals, and existing structures.",
+        "Step 2: Prioritize relevant topics (e.g. occupational pensions, executive provision, tax optimization, public funding).",
+        "Step 3: Implement concrete measures with clear ownership.",
+        "Step 4: Ongoing optimization and strategic development."
+      ]
+    },
+    "quotes": {
+      "title": "Typical client profiles",
+      "subtitle": "For companies that want to make financial decisions with clarity and foresight.",
+      "items": [
+        {
+          "quote": "We did not need a standard product. We needed independent advice that aligned our business goals with a long-term benefits structure.",
+          "name": "Sophie R.",
+          "role": "Managing Director, services SME"
+        },
+        {
+          "quote": "We wanted to offer our employees an attractive occupational pension (bAV) as a real company benefit and needed a solution that is clear and practical to implement.",
+          "name": "Daniel M.",
+          "role": "Managing Director, mid-sized company"
+        },
+        {
+          "quote": "We wanted to align executive planning, company goals, and private financial structures instead of solving each topic in isolation.",
+          "name": "Claudia S.",
+          "role": "Business owner, agency group"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Looking for independent financial advisory for your business?",
+      "subtitle": "For business customers",
+      "body": "If you are an entrepreneur or managing director looking for strategic support with occupational pensions, executive financial provision, tax optimization, public funding, financing, and business structure, we can define a practical first step together.",
+      "primary": "Open contact form",
+      "secondary": "Browse calculators"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "badge": "Independent Advisory",
+      "title": "Finanzlau stands for independent financial and business advisory with a strategic focus.",
+      "intro": [
+        "Our office is based in Dusseldorf. From here, we support clients across Germany, either in person or digitally.",
+        "Maximilian Fanslau is the owner and responsible point of contact. As an independent financial broker, we are not tied to any bank or insurance company. We represent only our clients’ interests and work across the full financial market to develop tailored, sustainable solutions.",
+        "Our approach is based on a holistic perspective. Instead of prioritizing individual products, we design structured concepts that connect wealth building, retirement planning, risk protection, real estate planning, financing, and tax considerations in a coherent way."
+      ]
+    },
+    "profile": {
+      "title": "Maximilian Fanslau",
+      "role": "Owner and responsible advisor",
+      "imageAlt": "Portrait of Maximilian Fanslau (placeholder)",
+      "cardTitle": "Based in Dusseldorf",
+      "cardBody": "Serving clients regionally and across Germany, in person or digitally."
+    },
+    "privateClients": {
+      "title": "For Private Clients",
+      "paragraphs": [
+        "We support private clients in building wealth systematically, designing suitable retirement strategies, and protecting relevant risks. Real estate projects, refinancing, and debt restructuring are integrated into the overall strategy and reviewed across the market.",
+        "We also analyze existing structures for optimization potential, include tax-efficient planning options, and review public funding programs that can strengthen your financial plan."
+      ]
+    },
+    "businessLeaders": {
+      "title": "For Entrepreneurs and Managing Directors",
+      "paragraphs": [
+        "We advise self-employed professionals, companies, and managing directors on strategic financial decisions and structured business planning. This includes executive pension structures, corporate benefit systems, and the coordination of private and business financial structures.",
+        "Investment projects, commercial financing, liquidity planning, and the use of public funding are integrated into the overall concept with an economically sound approach."
+      ]
+    },
+    "closing": "Finanzlau stands for independent advice, market overview, and personal responsibility. We work in a structured, discreet, and long-term oriented way and support clients regionally and throughout Germany.",
+    "cta": {
+      "primary": "Get in touch",
+      "secondary": "Business customers",
+      "tertiary": "Calculators"
     }
   }
 }

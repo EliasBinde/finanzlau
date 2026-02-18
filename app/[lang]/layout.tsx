@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import {Inter} from "next/font/google";
+import {Montserrat} from "next/font/google";
 import "../globals.css";
 import {Navbar} from "@/components/navbar";
 import {getDictionary, hasLocale} from "./dictionaries";
@@ -7,7 +7,7 @@ import {notFound} from 'next/navigation'
 import {locales} from "@/proxy";
 
 
-const inter = Inter({
+const montserrat = Montserrat({
     subsets: ["latin"],
     variable: "--font-sans",
     display: "swap",
@@ -35,7 +35,7 @@ export default async function RootLayout({children, params}: LayoutProps<"/[lang
 
 
     return (
-        <html lang={lang} className={inter.variable}>
+        <html lang={lang} className={montserrat.variable}>
         <body className="min-h-screen bg-background font-sans text-foreground antialiased">
         <div className="flex min-h-screen flex-col">
             <header className="border-b">

@@ -3,8 +3,10 @@
     "home": "Start",
     "about": "Über uns",
     "blog": "Blog",
+    "calculators": "Rechner",
+    "career": "Karriere",
     "contact": "Kontakt",
-    "calculators": "Rechner"
+    "businessCustomers": "Geschäftskunden"
   },
   "contactForm": {
     "title": "Kontaktieren Sie unser Beratungsteam",
@@ -424,6 +426,223 @@
         "amountLabel": "Betrag"
       },
       "disclaimer": "Dieser Rechner liefert eine Schätzung und kann je nach individueller Situation von der Lohnabrechnung abweichen."
+    },
+    "overview": {
+      "badge": "Tools",
+      "subtitle": "Wähle einen Rechner und erhalte in wenigen Schritten eine belastbare Einschätzung für deine Finanzplanung.",
+      "cardCta": "Rechner öffnen"
+    }
+  },
+  "career": {
+    "hero": {
+      "badges": [
+        "Karriere",
+        "Für Karriereeinsteiger",
+        "Für Brancheninsider"
+      ],
+      "title": "Karriere in der Finanzberatung bei FINANZLAU",
+      "subtitle": "Wir suchen motivierte Karriereeinsteiger und erfahrene Brancheninsider, die Beratung mit Verantwortung, Struktur und echtem Mandantenfokus leben wollen. Dazu gehören interne Weiterbildung, Webinare, monatliche Seminare und ausgewählte externe Tagungen.",
+      "primaryCta": "Interesse anmelden",
+      "secondaryCta": "Unverbindlich sprechen",
+      "disclaimer": "Wir arbeiten unabhängig, mandantenorientiert und mit klarem Qualitätsanspruch in der Beratung."
+    },
+    "stats": [
+      {
+        "value": "1:1",
+        "label": "Einarbeitung und Entwicklung mit direktem Sparring"
+      },
+      {
+        "value": "Klar",
+        "label": "strukturierte Prozesse statt Vertriebschaos"
+      },
+      {
+        "value": "Langfristig",
+        "label": "Aufbau auf nachhaltige Mandantenbeziehungen"
+      }
+    ],
+    "pillars": {
+      "title": "Was dich im Karriereweg erwartet",
+      "subtitle": "Ein praxisnaher Rahmen für Einstieg, Vertiefung und verantwortliche Mandatsarbeit.",
+      "items": [
+        {
+          "title": "Strukturierter Einstieg",
+          "body": "Karriereeinsteiger erhalten einen klaren Fahrplan für Beratungsgespräche, Bedarfsanalyse, Dokumentation und saubere Umsetzung im Alltag."
+        },
+        {
+          "title": "Kontinuierliche Aus- und Weiterbildung",
+          "body": "Du entwickelst dich durch interne Schulungen, Webinare, monatliche Seminare und den Besuch externer Konferenzen fachlich und methodisch gezielt weiter."
+        },
+        {
+          "title": "Mandantenorientiertes Arbeiten",
+          "body": "Im Mittelpunkt stehen tragfähige Lösungen über den gesamten Markt statt Produktvorgaben einzelner Anbieter."
+        }
+      ]
+    },
+    "roadmap": {
+      "title": "Orientierung für die ersten Monate",
+      "items": [
+        "Monat 1: Kennenlernen von Arbeitsweise, Beratungsprozess und Qualitätsstandards.",
+        "Monat 2: Eigenständige Gesprächsführung mit enger Begleitung und Feedback.",
+        "Monat 3: Teilnahme an internen Schulungen, Webinaren und den monatlichen Seminaren.",
+        "Ab Monat 4: Ausbau von Verantwortung, Spezialisierung sowie gezielte Teilnahme an externen Konferenzen."
+      ]
+    },
+    "quotes": {
+      "title": "Typische Profile, die gut zu uns passen",
+      "subtitle": "Beispiele aus der Praxis für den Einstieg oder den nächsten Karriereschritt.",
+      "items": [
+        {
+          "quote": "Ich suche als Karriereeinsteiger ein Umfeld mit klarer Struktur, hohen Standards und ehrlichem Feedback statt reiner Verkaufsrhetorik.",
+          "name": "Anna K.",
+          "role": "Karriereeinsteigerin, Finanzberatung"
+        },
+        {
+          "quote": "Als Brancheninsider will ich meine Erfahrung in einer unabhängigen Beratung einsetzen, die Mandanteninteressen konsequent in den Mittelpunkt stellt.",
+          "name": "Murat B.",
+          "role": "Brancheninsider, Finanzberatung"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Passt das zu deinem nächsten Karriereschritt?",
+      "subtitle": "Karriere bei FINANZLAU",
+      "body": "Wenn du als Karriereeinsteiger oder Brancheninsider Verantwortung übernehmen und dich fachlich wie persönlich weiterentwickeln willst, freuen wir uns auf deine Nachricht. Dich erwarten ein frei verhandelbares Fixgehalt, ungedeckelte Provisionen und ein junges, dynamisches Team. Unsere Entwicklungskultur kombiniert interne Aus- und Weiterbildung, Webinare, monatliche Seminare und externe Tagungen. Bei guter Leistung erwarten dich außerdem firmeninterne Incentive-Reisen und weitere Formen der Wertschätzung.",
+      "primary": "Kontaktformular öffnen",
+      "secondary": "Rechner ansehen"
+    }
+  },
+  "businessCustomers": {
+    "hero": {
+      "badges": [
+        "Geschäftskunden",
+        "Unabhängige Finanzberatung",
+        "Düsseldorf & deutschlandweit"
+      ],
+      "title": "Finanz- und Unternehmensberatung für Geschäftskunden",
+      "subtitle": "FINANZLAU unterstützt Selbstständige, Unternehmer, Geschäftsführer und KMU bei fundierten Finanzentscheidungen. Unabhängig, praxisnah und mit klarem Fokus auf wirtschaftlich tragfähige Lösungen, Geschäftsführerfinanzversorgung, Steueroptimierung und die Nutzung staatlicher Förderungen.",
+      "primaryCta": "Beratungsgespräch anfragen",
+      "secondaryCta": "Business-Anfrage senden",
+      "disclaimer": "Unabhängige Beratung ohne Bindung an Banken oder Versicherungen."
+    },
+    "statsAriaLabel": "Leistungsfokus für Geschäftskunden",
+    "stats": [
+      {
+        "value": "KMU",
+        "label": "klarer Fokus auf Selbstständige und Unternehmen"
+      },
+      {
+        "value": "bAV + GF",
+        "label": "betriebliche Altersvorsorge und Geschäftsführerfinanzversorgung"
+      },
+      {
+        "value": "Förderung",
+        "label": "Steueroptimierung und Nutzung staatlicher Förderungen"
+      }
+    ],
+    "pillars": {
+      "title": "Wobei wir Geschäftskunden unterstützen",
+      "subtitle": "Strategisch, verständlich und direkt umsetzbar im unternehmerischen Alltag.",
+      "items": [
+        {
+          "title": "Betriebliche Altersvorsorge (bAV)",
+          "body": "Wir entwickeln und strukturieren bAV-Lösungen, die zu Unternehmensgröße, Belegschaft und Arbeitgeberzielen passen und in der Praxis sauber umsetzbar sind."
+        },
+        {
+          "title": "Geschäftsführerfinanzversorgung",
+          "body": "Für Geschäftsführer entwickeln wir tragfähige Versorgungskonzepte, die unternehmerische Ziele, persönliche Planung und langfristige Sicherheit miteinander verbinden."
+        },
+        {
+          "title": "Steueroptimierung",
+          "body": "Wir betrachten Finanzentscheidungen stets mit Blick auf steuerliche Hebel und Gestaltungsspielräume, damit Strukturen nicht nur fachlich, sondern auch wirtschaftlich sinnvoll sind."
+        },
+        {
+          "title": "Nutzung staatlicher Förderungen",
+          "body": "Wir prüfen relevante Förderprogramme und integrieren geeignete staatliche Förderungen in Finanzierung und Unternehmensplanung."
+        },
+        {
+          "title": "Finanzierung, Investition & Wachstum",
+          "body": "Ob Investitionsvorhaben, gewerbliche Finanzierung oder Erweiterung: Wir strukturieren Optionen, bewerten Szenarien und begleiten Finanzierungsentscheidungen wirtschaftlich fundiert."
+        },
+        {
+          "title": "Struktur für Unternehmer und Geschäftsführung",
+          "body": "Wir verbinden private und betriebliche Finanzthemen sinnvoll miteinander und entwickeln eine klare Steuerungslogik für nachhaltige Unternehmensentwicklung."
+        }
+      ]
+    },
+    "roadmap": {
+      "title": "Typischer Start in die Zusammenarbeit",
+      "items": [
+        "Schritt 1: Analyse von Ausgangslage, Unternehmenszielen und vorhandenen Strukturen.",
+        "Schritt 2: Priorisierung der relevanten Themen (z. B. bAV, Geschäftsführerfinanzversorgung, Steueroptimierung, Fördermittel).",
+        "Schritt 3: Umsetzung konkreter Maßnahmen mit klaren Verantwortlichkeiten.",
+        "Schritt 4: Laufende Optimierung und strategische Weiterentwicklung."
+      ]
+    },
+    "quotes": {
+      "title": "Typische Mandantenprofile",
+      "subtitle": "Für Unternehmen, die finanzielle Entscheidungen mit Klarheit und Weitblick treffen wollen.",
+      "items": [
+        {
+          "quote": "Wir brauchten keine Standardlösung, sondern eine unabhängige Finanzberatung, die unsere Unternehmensziele und Versorgungsstruktur ganzheitlich betrachtet.",
+          "name": "Sophie R.",
+          "role": "Geschäftsführerin, Dienstleistungs-KMU"
+        },
+        {
+          "quote": "Wir wollten unseren Mitarbeitenden eine attraktive betriebliche Altersvorsorge als echten Benefit anbieten und brauchten dafür eine verständliche, umsetzbare Lösung.",
+          "name": "Daniel M.",
+          "role": "Geschäftsführer, mittelständisches Unternehmen"
+        },
+        {
+          "quote": "Für die Geschäftsführung wollten wir Versorgung, Unternehmensziele und private Planung sauber aufeinander abstimmen, statt Einzelthemen isoliert zu lösen.",
+          "name": "Claudia S.",
+          "role": "Unternehmerin, Agenturgruppe"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Sie suchen eine unabhängige Finanzberatung für Ihr Unternehmen?",
+      "subtitle": "Für Geschäftskunden",
+      "body": "Wenn Sie als Unternehmer oder Geschäftsführer strategische Unterstützung bei bAV, Geschäftsführerfinanzversorgung, Steueroptimierung, staatlichen Förderungen, Finanzierung und Unternehmensstruktur suchen, sprechen wir gerne über einen passenden ersten Schritt.",
+      "primary": "Kontaktformular öffnen",
+      "secondary": "Rechner ansehen"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "badge": "Unabhängige Beratung",
+      "title": "Finanzlau steht für unabhängige Finanz- und Unternehmensberatung mit strategischem Anspruch.",
+      "intro": [
+        "Unser Sitz ist in Düsseldorf. Von hier aus betreuen wir Mandanten in ganz Deutschland, persönlich vor Ort oder digital.",
+        "Inhaber und verantwortlicher Ansprechpartner ist Maximilian Fanslau. Als freier Finanzmakler sind wir an keine Bank oder Versicherung gebunden. Wir vertreten ausschließlich die Interessen unserer Mandanten und greifen auf den gesamten Finanzmarkt zu, um individuelle und tragfähige Lösungen zu entwickeln.",
+        "Unser Ansatz basiert auf einer ganzheitlichen Beratung. Statt einzelne Produkte in den Vordergrund zu stellen, entwickeln wir strukturierte Konzepte, die Vermögensaufbau, Altersvorsorge, Absicherung, Immobilienplanung, Finanzierungen und steuerliche Aspekte sinnvoll miteinander verbinden."
+      ]
+    },
+    "profile": {
+      "title": "Maximilian Fanslau",
+      "role": "Inhaber und verantwortlicher Ansprechpartner",
+      "imageAlt": "Porträt von Maximilian Fanslau (Platzhalter)",
+      "cardTitle": "Sitz in Düsseldorf",
+      "cardBody": "Betreuung regional und deutschlandweit, persönlich oder digital."
+    },
+    "privateClients": {
+      "title": "Für Privatkunden",
+      "paragraphs": [
+        "Wir begleiten Privatpersonen beim systematischen Vermögensaufbau, bei der Planung einer passenden Altersvorsorge und bei der Absicherung relevanter Risiken. Auch Immobilienvorhaben, Anschlussfinanzierungen oder Umschuldungen werden in die Gesamtstrategie eingebunden und marktübergreifend geprüft.",
+        "Darüber hinaus analysieren wir bestehende Strukturen auf Optimierungspotenzial, berücksichtigen steuerliche Gestaltungsmöglichkeiten und prüfen staatliche Förderprogramme, die Ihre Planung sinnvoll unterstützen können."
+      ]
+    },
+    "businessLeaders": {
+      "title": "Für Unternehmer und Geschäftsführer",
+      "paragraphs": [
+        "Selbstständige, Unternehmen und Geschäftsführer beraten wir bei strategischen Finanzentscheidungen und in der strukturierten Unternehmensplanung. Dazu gehören Geschäftsführerversorgungen, betriebliche Versorgungssysteme sowie die Abstimmung von privaten und betrieblichen Finanzstrukturen.",
+        "Investitionsvorhaben, gewerbliche Finanzierungen, Liquiditätsplanung und die Nutzung öffentlicher Fördermittel werden dabei wirtschaftlich fundiert in das Gesamtkonzept integriert."
+      ]
+    },
+    "closing": "Finanzlau steht für unabhängige Beratung, Marktüberblick und persönliche Verantwortung. Wir arbeiten strukturiert, diskret und langfristig orientiert und betreuen Mandanten regional sowie deutschlandweit.",
+    "cta": {
+      "primary": "Kontakt aufnehmen",
+      "secondary": "Geschäftskunden",
+      "tertiary": "Rechner"
     }
   }
 }

@@ -671,7 +671,7 @@ export function EmergencyFundCalculator({dict}: { dict: Dictionary }) {
     }, []);
 
     return (
-        <div className="flex flex-col gap-6 md:flex-row">
+        <div className={`flex flex-col gap-6 md:flex-row ${submitted ? "" : "md:justify-center"}`}>
             <InputsCard
                 dict={dict}
                 inputs={inputs}

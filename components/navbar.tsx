@@ -45,6 +45,8 @@ export function Navbar({lang, dict}: Props) {
         {href: "/about" as const, label: dict.nav.about},
         {href: "/blog" as const, label: dict.nav.blog},
         {href: "/calculators" as const, label: dict.nav.calculators},
+        {href: "/career" as const, label: dict.nav.career},
+        {href: "/business-customers" as const, label: dict.nav.businessCustomers},
         {href: "/contact" as const, label: dict.nav.contact},
     ] as const
 
