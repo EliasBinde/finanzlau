@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { client } from "@/lib/sanity/sanity";
 import { postBySlugQuery } from "@/lib/sanity/sanity-queries/postBySlugQuery";
 import { postSlugsQuery } from "@/lib/sanity/sanity-queries/postSlugsQuery";
 import { RichText } from "@/components/portable-text";
-import { hasLocale } from "@/app/[lang]/dictionaries";
+import { getDictionary, hasLocale } from "@/app/[lang]/dictionaries";
 import { locales } from "@/proxy";
 
 export const revalidate = 600;
@@ -90,6 +91,8 @@ export default async function Page({ params }: PageProps) {
 
     const post = await client.fetch<Post | null>(postBySlugQuery, { slug, lang });
     if (!post) notFound();
+    const { dict } = await getDictionary(lang);
+    const cta = dict.blog.postCta;
 
     return (
         <article className="mx-auto max-w-3xl space-y-6">
@@ -154,6 +157,23 @@ export default async function Page({ params }: PageProps) {
                     </div>
                 </section>
             ) : null}
+
+            <section className="pt-6">
+                <div className="rounded-xl border bg-card p-5 sm:p-6">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                        <div>
+                            <h2 className="text-lg font-semibold">{cta.title}</h2>
+                            <p className="mt-1 text-sm text-muted-foreground">{cta.body}</p>
+                        </div>
+                        <Link
+                            href={`/${lang}/contact`}
+                            className="inline-flex items-center justify-center rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted"
+                        >
+                            {cta.button}
+                        </Link>
+                    </div>
+                </div>
+            </section>
         </article>
     );
 }

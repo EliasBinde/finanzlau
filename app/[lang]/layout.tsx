@@ -1,5 +1,6 @@
 import type {Metadata} from "next";
 import {Montserrat} from "next/font/google";
+import Link from "next/link";
 import "../globals.css";
 import {Navbar} from "@/components/navbar";
 import {getDictionary, hasLocale} from "./dictionaries";
@@ -31,6 +32,10 @@ export async function generateStaticParams() {
     return locales.map((lang) => ({lang}));
 }
 
+function withLangPath(lang: string, href: string): string {
+    return href === "/" ? `/${lang}` : `/${lang}${href}`;
+}
+
 export default async function RootLayout({children, params}: LayoutProps<"/[lang]">) {
     const {lang} = await params;
 
@@ -54,8 +59,12 @@ export default async function RootLayout({children, params}: LayoutProps<"/[lang
             </main>
 
             <footer className="border-t">
-                <div className="mx-auto max-w-7xl px-4 py-6 text-sm text-muted-foreground sm:px-6 lg:px-8">
-                    © {new Date().getFullYear()} FINANZLAU. All rights reserved.
+                <div
+                    className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+                    <span>© {new Date().getFullYear()} FINANZLAU. {dict.footer.rightsReserved}</span>
+                    <Link href={withLangPath(lang, "/impressum")} className="underline underline-offset-4">
+                        Impressum
+                    </Link>
                 </div>
             </footer>
         </div>

@@ -625,5 +625,15 @@
       "secondary": "Business customers",
       "tertiary": "Calculators"
     }
+  },
+  "blog": {
+    "postCta": {
+      "title": "Interested in the strategy described here?",
+      "body": "If you want to apply this approach to your own situation, we can discuss the most practical next steps.",
+      "button": "Contact"
+    }
+  },
+  "footer": {
+    "rightsReserved": "All rights reserved."
   }
 }

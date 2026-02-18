@@ -625,5 +625,15 @@
       "secondary": "Geschäftskunden",
       "tertiary": "Rechner"
     }
+  },
+  "blog": {
+    "postCta": {
+      "title": "Interessiert an der hier beschriebenen Strategie?",
+      "body": "Wenn Sie diese Vorgehensweise für Ihre eigene Situation prüfen möchten, sprechen wir gern über die nächsten sinnvollen Schritte.",
+      "button": "Kontakt"
+    }
+  },
+  "footer": {
+    "rightsReserved": "Alle Rechte vorbehalten."
   }
 }
