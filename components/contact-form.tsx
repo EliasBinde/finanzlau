@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Combobox, ComboboxContent, ComboboxEmpty, ComboboxInput, ComboboxItem, ComboboxList } from "@/components/ui/combobox";
 import { initialState } from "@/actions/submit-contact.state";
-import type { Dictionary } from "@/app/[lang]/dictionaries";
+import type { Dictionary, Locale } from "@/app/[lang]/dictionaries";
 
 type ContactPreference = "email" | "phone";
 
@@ -33,7 +33,7 @@ function FieldError({ state, name }: { state: ContactFormState; name: string }) 
     ) : null;
 }
 
-export function ContactForm({ dict }: { dict: Dictionary }) {
+export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) {
     const [state, formAction, pending] = useActionState(submitContact, initialState);
 
     const interests = dict.contactForm.options.interests;
@@ -65,6 +65,7 @@ export function ContactForm({ dict }: { dict: Dictionary }) {
 
             <CardContent>
                 <form action={formAction} className="space-y-6">
+                    <input type="hidden" name="lang" value={lang} />
                     {state.message ? (
                         <p
                             aria-live="polite"

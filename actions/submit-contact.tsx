@@ -1,9 +1,27 @@
 "use server";
 
 import { z } from "zod";
+import { Resend } from "resend";
 
 
 const LOG = process.env.CONTACT_LOG === "1";
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
+const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
+
+function isGerman(lang: string): boolean {
+    return lang === "de";
+}
+
+function msg(lang: string) {
+    const de = isGerman(lang);
+    return {
+        checkFields: de ? "Bitte prüfe die markierten Felder." : "Please check the highlighted fields.",
+        success: de ? "Danke — wir haben deine Nachricht erhalten und melden uns zeitnah." : "Thanks — we received your message and will get back to you shortly.",
+        emailConfigMissing: de ? "Der E-Mail-Dienst ist noch nicht vollständig konfiguriert. Bitte versuche es in Kürze erneut." : "Email service is not configured yet. Please try again shortly.",
+        sendFailed: de ? "Deine Nachricht konnte gerade nicht gesendet werden. Bitte versuche es erneut." : "We could not send your message right now. Please try again.",
+    };
+}
 
 function redact(raw: Record<string, string>) {
     return {
@@ -53,6 +71,9 @@ export default async function submitContact(
     prevState: ContactFormState,
     formData: FormData
 ): Promise<ContactFormState> {
+    const lang = getString(formData, "lang").trim();
+    const t = msg(lang);
+    const website = getString(formData, "website").trim();
     const raw = {
         fullName: getString(formData, "fullName"),
         email: getString(formData, "email"),
@@ -75,7 +96,7 @@ export default async function submitContact(
         if (LOG) console.info("[contact] validation failed", flat.fieldErrors);
         return {
             ok: false,
-            message: "Please check the highlighted fields.",
+            message: t.checkFields,
             fieldErrors: flat.fieldErrors,
             values: raw,
         };
@@ -83,9 +104,67 @@ export default async function submitContact(
 
     if (LOG) console.info("[contact] validation ok");
 
+    // Honeypot: silently accept bots to reduce spam retries.
+    if (website) {
+        if (LOG) console.info("[contact] honeypot triggered");
+        return {
+            ok: true,
+            message: t.success,
+            fieldErrors: {},
+            values: {},
+        };
+    }
+
+    if (!RESEND_API_KEY || !CONTACT_TO_EMAIL || !CONTACT_FROM_EMAIL) {
+        if (LOG) {
+            console.error("[contact] missing email env vars", {
+                hasResendApiKey: Boolean(RESEND_API_KEY),
+                hasContactToEmail: Boolean(CONTACT_TO_EMAIL),
+                hasContactFromEmail: Boolean(CONTACT_FROM_EMAIL),
+            });
+        }
+        return {
+            ok: false,
+            message: t.emailConfigMissing,
+            fieldErrors: {},
+            values: raw,
+        };
+    }
+
+    const resend = new Resend(RESEND_API_KEY);
+
+    try {
+        const d = parsed.data;
+        await resend.emails.send({
+            from: CONTACT_FROM_EMAIL,
+            to: CONTACT_TO_EMAIL,
+            replyTo: d.email,
+            subject: `New contact inquiry: ${d.fullName}`,
+            text: [
+                `Name: ${d.fullName}`,
+                `Email: ${d.email}`,
+                `Phone: ${d.phone || "-"}`,
+                `Country: ${d.country}`,
+                `Topic: ${d.interest}`,
+                `Preferred contact method: ${d.contactPreference}`,
+                "",
+                "Message:",
+                d.message,
+            ].join("\n"),
+        });
+    } catch (error) {
+        console.error("[contact] email send failed", error);
+        return {
+            ok: false,
+            message: t.sendFailed,
+            fieldErrors: {},
+            values: raw,
+        };
+    }
+
     return {
         ok: true,
-        message: "Thanks — we received your message and will get back to you shortly.",
+        message: t.success,
         fieldErrors: {},
         values: {},
     };
