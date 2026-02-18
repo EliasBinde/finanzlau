@@ -38,6 +38,9 @@ export function HomeHero({lang, dict}: Props) {
                     ) : null}
 
                     <div className="space-y-3">
+                        <p className="text-sm font-semibold tracking-wide text-primary">
+                            {hero.slogan}
+                        </p>
                         <h1 className="text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
                             {hero.title}
                         </h1>
