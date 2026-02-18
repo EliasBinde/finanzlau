@@ -41,6 +41,8 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
 
     const [country, setCountry] = React.useState(state.values.country ?? "");
     const [interest, setInterest] = React.useState(state.values.interest ?? "");
+    const [email, setEmail] = React.useState(state.values.email ?? "");
+    const [phone, setPhone] = React.useState(state.values.phone ?? "");
     const [contactPreference, setContactPreference] = React.useState<ContactPreference>(
         asContactPreference(state.values.contactPreference ?? "email")
     );
@@ -48,8 +50,22 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
     React.useEffect(() => {
         setCountry(state.values.country ?? "");
         setInterest(state.values.interest ?? "");
+        setEmail(state.values.email ?? "");
+        setPhone(state.values.phone ?? "");
         setContactPreference(asContactPreference(state.values.contactPreference ?? "email"));
     }, [state.values]);
+
+    const emailProvided = email.trim().length > 0;
+    const phoneProvided = phone.trim().length > 0;
+    const lockedContactPreference: ContactPreference | null = emailProvided !== phoneProvided
+        ? (emailProvided ? "email" : "phone")
+        : null;
+
+    React.useEffect(() => {
+        if (lockedContactPreference && contactPreference !== lockedContactPreference) {
+            setContactPreference(lockedContactPreference);
+        }
+    }, [lockedContactPreference, contactPreference]);
 
     return (
         <Card className="w-full max-w-xl">
@@ -64,7 +80,17 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
             </CardHeader>
 
             <CardContent>
-                <form action={formAction} className="space-y-6">
+                <form
+                    action={formAction}
+                    className="space-y-6"
+                    onReset={() => {
+                        setCountry("");
+                        setInterest("");
+                        setEmail("");
+                        setPhone("");
+                        setContactPreference("email");
+                    }}
+                >
                     <input type="hidden" name="lang" value={lang} />
                     {state.message ? (
                         <p
@@ -107,8 +133,8 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
                                     name="email"
                                     type="email"
                                     placeholder={dict.contactForm.fields.email.placeholder}
-                                    defaultValue={state.values.email ?? ""}
-                                    required
+                                    value={email}
+                                    onChange={(event) => setEmail(event.target.value)}
                                     autoComplete="email"
                                     aria-invalid={hasError(state, "email")}
                                     className={hasError(state, "email") ? "border-destructive focus-visible:ring-destructive" : undefined}
@@ -123,7 +149,8 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
                                     name="phone"
                                     type="tel"
                                     placeholder={dict.contactForm.fields.phone.placeholder}
-                                    defaultValue={state.values.phone ?? ""}
+                                    value={phone}
+                                    onChange={(event) => setPhone(event.target.value)}
                                     autoComplete="tel"
                                     aria-invalid={hasError(state, "phone")}
                                     className={hasError(state, "phone") ? "border-destructive focus-visible:ring-destructive" : undefined}
@@ -198,7 +225,11 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
                             <Field>
                                 <FieldLabel>{dict.contactForm.fields.contactPreference.label}</FieldLabel>
                                 <input type="hidden" name="contactPreference" value={contactPreference} />
-                                <Select value={contactPreference} onValueChange={(v) => setContactPreference(asContactPreference(v))}>
+                                <Select
+                                    value={contactPreference}
+                                    onValueChange={(v) => setContactPreference(asContactPreference(v))}
+                                    disabled={Boolean(lockedContactPreference)}
+                                >
                                     <SelectTrigger
                                         aria-invalid={hasError(state, "contactPreference")}
                                         className={hasError(state, "contactPreference") ? "border-destructive focus:ring-destructive" : undefined}
@@ -207,8 +238,12 @@ export function ContactForm({ dict, lang }: { dict: Dictionary; lang: Locale }) 
                                     </SelectTrigger>
                                     <SelectContent>
                                         <SelectGroup>
-                                            <SelectItem value="email">{dict.contactForm.fields.contactPreference.email}</SelectItem>
-                                            <SelectItem value="phone">{dict.contactForm.fields.contactPreference.phone}</SelectItem>
+                                            {!lockedContactPreference || lockedContactPreference === "email" ? (
+                                                <SelectItem value="email">{dict.contactForm.fields.contactPreference.email}</SelectItem>
+                                            ) : null}
+                                            {!lockedContactPreference || lockedContactPreference === "phone" ? (
+                                                <SelectItem value="phone">{dict.contactForm.fields.contactPreference.phone}</SelectItem>
+                                            ) : null}
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>

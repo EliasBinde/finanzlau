@@ -72,6 +72,22 @@
         "Vereinigte Staaten",
         "Sonstiges"
       ]
+    },
+    "validationMessages": {
+      "fullName": "Bitte gib deinen vollständigen Namen ein.",
+      "email": "Bitte gib eine gültige E-Mail-Adresse ein.",
+      "phone": "Bitte gib eine gültige Telefonnummer ein.",
+      "country": "Bitte wähle dein Land aus.",
+      "topic": "Bitte wähle ein Thema aus.",
+      "contactPreference": "Bitte wähle eine bevorzugte Kontaktart aus.",
+      "messageMin": "Bitte gib etwas mehr Details an (mind. 20 Zeichen).",
+      "consent": "Die Einwilligung ist erforderlich, damit wir dich kontaktieren können.",
+      "emailOrPhone": "Bitte gib mindestens eine E-Mail-Adresse oder Telefonnummer an.",
+      "contactPreferenceAvailability": "Die bevorzugte Kontaktart muss zu den angegebenen Kontaktdaten passen."
+    },
+    "systemMessages": {
+      "emailConfigMissing": "Der E-Mail-Dienst ist noch nicht vollständig konfiguriert. Bitte versuche es in Kürze erneut.",
+      "sendFailed": "Deine Nachricht konnte gerade nicht gesendet werden. Bitte versuche es erneut."
     }
   },
   "appointmentSlots": {

@@ -72,6 +72,22 @@
         "United States",
         "Other"
       ]
+    },
+    "validationMessages": {
+      "fullName": "Please enter your full name.",
+      "email": "Please enter a valid email address.",
+      "phone": "Please enter a valid phone number.",
+      "country": "Please select your country.",
+      "topic": "Please select a topic.",
+      "contactPreference": "Please choose a contact preference.",
+      "messageMin": "Please provide a bit more detail (min. 20 characters).",
+      "consent": "Consent is required to contact you.",
+      "emailOrPhone": "Please provide at least an email address or phone number.",
+      "contactPreferenceAvailability": "Preferred contact method must match the contact details provided."
+    },
+    "systemMessages": {
+      "emailConfigMissing": "Email service is not configured yet. Please try again shortly.",
+      "sendFailed": "We could not send your message right now. Please try again."
     }
   },
   "appointmentSlots": {

@@ -2,26 +2,13 @@
 
 import { z } from "zod";
 import { Resend } from "resend";
+import { getDictionary } from "@/app/[lang]/dictionaries";
 
 
 const LOG = process.env.CONTACT_LOG === "1";
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL;
 const CONTACT_FROM_EMAIL = process.env.CONTACT_FROM_EMAIL;
-
-function isGerman(lang: string): boolean {
-    return lang === "de";
-}
-
-function msg(lang: string) {
-    const de = isGerman(lang);
-    return {
-        checkFields: de ? "Bitte prüfe die markierten Felder." : "Please check the highlighted fields.",
-        success: de ? "Danke — wir haben deine Nachricht erhalten und melden uns zeitnah." : "Thanks — we received your message and will get back to you shortly.",
-        emailConfigMissing: de ? "Der E-Mail-Dienst ist noch nicht vollständig konfiguriert. Bitte versuche es in Kürze erneut." : "Email service is not configured yet. Please try again shortly.",
-        sendFailed: de ? "Deine Nachricht konnte gerade nicht gesendet werden. Bitte versuche es erneut." : "We could not send your message right now. Please try again.",
-    };
-}
 
 function redact(raw: Record<string, string>) {
     return {
@@ -39,28 +26,70 @@ export type ContactFormState = {
     values: Record<string, string>;
 };
 
-const contactPreferenceSchema = z
-    .string()
-    .refine((v): v is "email" | "phone" => v === "email" || v === "phone", {
-        message: "Please choose a contact preference.",
-    });
+function buildSchema(v: {
+    fullName: string;
+    email: string;
+    phone: string;
+    country: string;
+    topic: string;
+    contactPreference: string;
+    messageMin: string;
+    consent: string;
+    emailOrPhone: string;
+    contactPreferenceAvailability: string;
+}) {
+    const contactPreferenceSchema = z
+        .string()
+        .refine((value): value is "email" | "phone" => value === "email" || value === "phone", {
+            message: v.contactPreference,
+        });
 
-const schema = z.object({
-    fullName: z.string().min(2, "Please enter your full name."),
-    email: z.email("Please enter a valid email address."),
-    phone: z
-        .string()
-        .optional()
-        .transform((v) => (v ?? "").trim())
-        .refine((v) => v === "" || v.length >= 6, "Please enter a valid phone number."),
-    country: z.string().min(2, "Please select your country."),
-    interest: z.string().min(2, "Please select a topic."),
-    contactPreference: contactPreferenceSchema,
-    message: z.string().min(20, "Please provide a bit more detail (min. 20 characters)."),
-    consent: z
-        .string()
-        .refine((v) => v === "on", { message: "Consent is required to contact you." }),
-});
+    return z.object({
+        fullName: z.string().min(2, v.fullName),
+        email: z
+            .string()
+            .optional()
+            .transform((value) => (value ?? "").trim())
+            .refine((value) => value === "" || z.email().safeParse(value).success, v.email),
+        phone: z
+            .string()
+            .optional()
+            .transform((value) => (value ?? "").trim())
+            .refine((value) => value === "" || value.length >= 6, v.phone),
+        country: z.string().min(2, v.country),
+        interest: z.string().min(2, v.topic),
+        contactPreference: contactPreferenceSchema,
+        message: z.string().min(20, v.messageMin),
+        consent: z
+            .string()
+            .refine((value) => value === "on", { message: v.consent }),
+    }).superRefine((data, ctx) => {
+        const hasEmail = Boolean(data.email);
+        const hasPhone = Boolean(data.phone);
+
+        if (!hasEmail && !hasPhone) {
+            ctx.addIssue({ code: "custom", path: ["email"], message: v.emailOrPhone });
+            ctx.addIssue({ code: "custom", path: ["phone"], message: v.emailOrPhone });
+            return;
+        }
+
+        if (hasEmail && !hasPhone && data.contactPreference !== "email") {
+            ctx.addIssue({
+                code: "custom",
+                path: ["contactPreference"],
+                message: v.contactPreferenceAvailability,
+            });
+        }
+
+        if (hasPhone && !hasEmail && data.contactPreference !== "phone") {
+            ctx.addIssue({
+                code: "custom",
+                path: ["contactPreference"],
+                message: v.contactPreferenceAvailability,
+            });
+        }
+    });
+}
 
 function getString(formData: FormData, key: string): string {
     const v = formData.get(key);
@@ -72,7 +101,9 @@ export default async function submitContact(
     formData: FormData
 ): Promise<ContactFormState> {
     const lang = getString(formData, "lang").trim();
-    const t = msg(lang);
+    const { dict } = await getDictionary(lang || "de");
+    const t = dict.contactForm;
+    const schema = buildSchema(t.validationMessages);
     const website = getString(formData, "website").trim();
     const raw = {
         fullName: getString(formData, "fullName"),
@@ -96,7 +127,7 @@ export default async function submitContact(
         if (LOG) console.info("[contact] validation failed", flat.fieldErrors);
         return {
             ok: false,
-            message: t.checkFields,
+            message: t.errorMessage,
             fieldErrors: flat.fieldErrors,
             values: raw,
         };
@@ -109,7 +140,7 @@ export default async function submitContact(
         if (LOG) console.info("[contact] honeypot triggered");
         return {
             ok: true,
-            message: t.success,
+            message: t.successMessage,
             fieldErrors: {},
             values: {},
         };
@@ -125,7 +156,7 @@ export default async function submitContact(
         }
         return {
             ok: false,
-            message: t.emailConfigMissing,
+            message: t.systemMessages.emailConfigMissing,
             fieldErrors: {},
             values: raw,
         };
@@ -138,7 +169,7 @@ export default async function submitContact(
         await resend.emails.send({
             from: CONTACT_FROM_EMAIL,
             to: CONTACT_TO_EMAIL,
-            replyTo: d.email,
+            ...(d.email ? { replyTo: d.email } : {}),
             subject: `New contact inquiry: ${d.fullName}`,
             text: [
                 `Name: ${d.fullName}`,
@@ -156,7 +187,7 @@ export default async function submitContact(
         console.error("[contact] email send failed", error);
         return {
             ok: false,
-            message: t.sendFailed,
+            message: t.systemMessages.sendFailed,
             fieldErrors: {},
             values: raw,
         };
@@ -164,7 +195,7 @@ export default async function submitContact(
 
     return {
         ok: true,
-        message: t.success,
+        message: t.successMessage,
         fieldErrors: {},
         values: {},
     };
