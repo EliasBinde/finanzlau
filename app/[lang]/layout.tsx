@@ -7,6 +7,7 @@ import {getDictionary, hasLocale} from "./dictionaries";
 import {notFound} from 'next/navigation'
 import {locales} from "@/proxy";
 import {UrlObject} from "url";
+import {CookieConsentBanner} from "@/components/cookie-consent-banner";
 
 
 const montserrat = Montserrat({
@@ -64,11 +65,17 @@ export default async function RootLayout({children, params}: LayoutProps<"/[lang
                 <div
                     className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
                     <span>© {new Date().getFullYear()} FINANZLAU. {dict.footer.rightsReserved}</span>
-                    <Link href={withLangPath(lang, "/impressum")} className="underline underline-offset-4">
-                        Impressum
-                    </Link>
+                    <div className="flex items-center gap-4">
+                        <Link href={withLangPath(lang, "/impressum")} className="underline underline-offset-4">
+                            {dict.footer.impressum}
+                        </Link>
+                        <Link href={withLangPath(lang, "/datenschutz")} className="underline underline-offset-4">
+                            {dict.footer.privacy}
+                        </Link>
+                    </div>
                 </div>
             </footer>
+            <CookieConsentBanner dict={dict} lang={lang}/>
         </div>
         </body>
         </html>

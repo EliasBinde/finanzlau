@@ -29,10 +29,10 @@ export default async function Page({params}: PageProps<'/[lang]/business-custome
                     className="pointer-events-none absolute inset-0 bg-linear-to-br from-muted/50 via-background to-muted/20"
                 />
                 <div className="relative grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-end">
-                    <div>
+                    <div className="min-w-0 [overflow-wrap:anywhere]">
                         <div className="flex flex-wrap gap-2">
                             {t.hero.badges.map((label) => (
-                                <Badge key={label} variant="secondary">
+                                <Badge key={label} variant="secondary" className="max-w-full break-words [overflow-wrap:anywhere]">
                                     {label}
                                 </Badge>
                             ))}
@@ -56,7 +56,7 @@ export default async function Page({params}: PageProps<'/[lang]/business-custome
                         </div>
                     </div>
 
-                    <div className="overflow-hidden rounded-xl border bg-background/80">
+                    <div className="min-w-0 overflow-hidden rounded-xl border bg-background/80">
                         <Image
                             src="/bcs.jpg"
                             alt={t.hero.title}

@@ -652,6 +652,106 @@
     }
   },
   "footer": {
-    "rightsReserved": "All rights reserved."
+    "rightsReserved": "All rights reserved.",
+    "impressum": "Legal notice",
+    "privacy": "Privacy notice"
+  },
+  "cookieBanner": {
+    "title": "Cookie settings",
+    "description": "We use technically necessary cookies to operate the website. Optional analytics cookies are only enabled after your consent.",
+    "essentialOnly": "Essential only",
+    "acceptAll": "Accept all",
+    "legalLink": "More information in the privacy notice"
+  },
+  "privacyPage": {
+    "title": "Privacy Notice",
+    "intro": [
+      "Unless stated otherwise below, providing your personal data is neither legally nor contractually required, and it is not necessary for concluding a contract. You are not obliged to provide this data. Not providing it has no adverse consequences unless a specific processing activity explicitly states otherwise.",
+      "Personal data means any information relating to an identified or identifiable natural person."
+    ],
+    "serverLogs": {
+      "title": "Server Log Files",
+      "paragraphs": [
+        "You can generally use our website without actively submitting personal information. However, when pages are accessed, your browser automatically transmits usage data to our web host or IT service provider, and this data is stored in server log files.",
+        "This includes in particular:"
+      ],
+      "bullets": [
+        "Name of the accessed page",
+        "Date and time of access",
+        "IP address",
+        "Amount of data transferred",
+        "Requesting provider"
+      ],
+      "legal": "Processing is based on Art. 6(1)(f) GDPR due to our legitimate interest in secure, stable, and technically optimized website operation."
+    },
+    "controller": {
+      "title": "Controller and Data Protection Contact",
+      "controllerLabel": "Controller responsible for data processing:",
+      "contactLabel": "Data protection contact:",
+      "lines": [
+        "Maximilian Henning Fanslau",
+        "Ginsterweg 22",
+        "40822 Mettmann",
+        "Phone: +49 171 3422274",
+        "Email: info@finanzlau.de"
+      ]
+    },
+    "email": {
+      "title": "Contact by Email",
+      "paragraphs": [
+        "If you contact us by email, we process the data you provide (e.g., name, email address, message content) to handle and respond to your request.",
+        "If your request relates to pre-contractual measures or an existing contract, processing is based on Art. 6(1)(b) GDPR. In all other cases, processing is based on Art. 6(1)(f) GDPR (legitimate interest in efficient communication)."
+      ]
+    },
+    "contactForm": {
+      "title": "Contact Form",
+      "paragraphs": [
+        "When using our contact form, we process the data you provide to handle your inquiry. Depending on the context, processing is based on Art. 6(1)(b) GDPR (pre-contractual or contractual communication) or Art. 6(1)(f) GDPR (legitimate interest in structured request handling)."
+      ]
+    },
+    "googleServices": {
+      "title": "Google Services (e.g., Google Tag Manager, Google Analytics)",
+      "paragraphs": [
+        "If we use optional Google services (especially for reach measurement and analytics), this is done only after your consent via our consent banner.",
+        "Depending on the service, usage data may be processed (e.g., shortened IP address, page views, technical browser information, interactions). Legal basis: Art. 6(1)(a) GDPR in conjunction with Section 25(1) TDDDG.",
+        "When using Google services, data transfers to third countries, especially the USA, cannot be ruled out. Google refers to appropriate safeguards, including certification under the EU-U.S. Data Privacy Framework."
+      ],
+      "moreInfo": "More information:",
+      "linkLabel": "Google Privacy",
+      "linkHref": "https://policies.google.com/privacy?hl=en"
+    },
+    "cookies": {
+      "title": "Cookies and Consent",
+      "paragraphs": [
+        "Our website uses technically necessary cookies to ensure core functionality and website security. Legal basis: Section 25(2) TDDDG.",
+        "Optional analytics or marketing cookies are only used on the basis of your consent under Section 25(1) TDDDG in conjunction with Art. 6(1)(a) GDPR.",
+        "You can manage your cookie settings via the consent banner. You can also delete or block cookies in your browser settings."
+      ]
+    },
+    "retention": {
+      "title": "Storage Duration",
+      "paragraphs": [
+        "We store personal data only as long as necessary for the stated purposes or as required by statutory retention obligations. Data is deleted afterwards."
+      ]
+    },
+    "rights": {
+      "title": "Your Rights",
+      "paragraphs": [
+        "Where legal requirements are met, you have rights under Art. 15 to 20 GDPR (access, rectification, erasure, restriction of processing, data portability).",
+        "You may also object under Art. 21 GDPR to processing based on Art. 6(1)(f) GDPR."
+      ]
+    },
+    "authority": {
+      "title": "Right to Lodge a Complaint with a Supervisory Authority",
+      "intro": "Under Art. 77 GDPR, you have the right to lodge a complaint with a supervisory authority. For North Rhine-Westphalia, this is in particular:",
+      "lines": [
+        "State Commissioner for Data Protection and Freedom of Information North Rhine-Westphalia",
+        "Kavalleriestr. 2-4",
+        "40213 Duesseldorf",
+        "Phone: +49 211 38424-0",
+        "Email: poststelle@ldi.nrw.de"
+      ]
+    },
+    "lastUpdated": "Last updated: February 19, 2026"
   }
 }
