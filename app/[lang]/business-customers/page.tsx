@@ -38,11 +38,11 @@ export default async function Page({params}: PageProps<'/[lang]/business-custome
                             ))}
                         </div>
 
-                        <h1 className="mt-4 max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+                        <h1 className="mt-4 max-w-3xl break-words text-3xl font-bold tracking-tight [overflow-wrap:anywhere] sm:text-4xl lg:text-5xl">
                             {t.hero.title}
                         </h1>
 
-                        <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
+                        <p className="mt-4 max-w-2xl break-words text-base leading-relaxed text-muted-foreground [overflow-wrap:anywhere]">
                             {t.hero.subtitle}
                         </p>
 
