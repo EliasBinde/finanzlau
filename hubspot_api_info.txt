@@ -1,0 +1,72 @@
+
+
+Yes, exactly! You'll need to do it in two steps:
+
+1. **Create the contact first:**
+   `POST /crm/v3/objects/contacts`
+
+2. **Then create the lead and associate it with that contact:**
+   `POST /crm/v3/objects/leads`
+   You'll need to include an association to the contact you just created.
+
+The leads API requires the contact association, so the order matters — contact first, then lead.
+
+```suggestions
+(Contacts API Guide)[/api-reference/crm-contacts-v3/guide]
+https://developers.hubspot.com/docs/api-reference/crm-contacts-v3/guide
+(Leads API Guide)[/api-reference/crm-leads-v3/guide]
+https://developers.hubspot.com/docs/api-reference/crm-leads-v3/guide
+```
+
+
+
+
+Here's your summary for the Meetings Scheduling API:
+
+Prerequisites
+You need a scheduling page set up in HubSpot with a connected calendar.
+Required scope: scheduler.meetings.meeting-link.read (for reading), plus write scopes for booking.
+Endpoints
+1. List scheduling pages
+GET /scheduler/v3/meetings/meeting-links
+Returns all your meeting links (slug, name, type, organizer, etc.)
+2. Get booking info & availability
+GET /scheduler/v3/meetings/meeting-links/book/{slug}
+Query params: timezone (e.g., America/New_York), monthOffset (0 = current month)
+Returns: busy times, availability windows per duration, form fields, buffer time, guest settings, branding metadata
+3. Get next availability page (pagination)
+GET /scheduler/v3/meetings/meeting-links/book/availability-page/{slug}
+Query param: timezone
+Returns: additional availability slots, hasMore flag for further pagination
+4. Book a meeting
+POST /scheduler/v3/meetings/meeting-links/book?timezone=America/New_York
+Request body:
+{
+  "slug": "jdoe",
+  "firstName": "Jane",
+  "lastName": "Smith",
+  "email": "jane@example.com",
+  "startTime": 1726059600000,
+  "duration": 1800000,
+  "guestEmails": [],
+  "timezone": "America/New_York",
+  "locale": "en-us",
+  "likelyAvailableUserIds": []
+}
+Automatically creates/matches a contact — returns contactId in the response.
+Response includes: calendarEventId, start, end, duration, contactId, isOffline
+Key notes
+If the calendar can't be reached, the meeting books offline (isOffline: true) — no calendar event is created, but the user gets notified.
+Not supported: UTM/UTK tracking, rescheduling, CAPTCHA tokens, payment meetings, or IP address submission.
+The slug is typically the first initial + last name (e.g., jdoe for John Doe).
+Availability times are in milliseconds UTC.
+Source: Meetings API Guide
+Meetings API Guide
+https://developers.hubspot.com/docs/api-reference/library-meetings-v3/guide
+Book a meeting endpoint
+https://developers.hubspot.com/docs/api-reference/scheduler-meetings-v3/meetings-links/post-scheduler-v3-meetings-meeting-links-book
+Get booking information endpoint
+https://developers.hubspot.com/docs/api-reference/scheduler-meetings-v3/meetings-links/get-scheduler-v3-meetings-meeting-links-book-slug
+
+
+
