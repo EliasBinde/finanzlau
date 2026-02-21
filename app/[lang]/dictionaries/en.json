@@ -158,6 +158,13 @@
       "booked": "Booked"
     }
   },
+  "contactPage": {
+    "whatsappCta": {
+      "badge": "Fast contact",
+      "title": "Message us directly on WhatsApp",
+      "button": "Contact on WhatsApp now"
+    }
+  },
   "home": {
     "hero": {
       "badge": "Independent Financial Advisory",

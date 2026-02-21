@@ -158,6 +158,13 @@
       "booked": "Gebucht"
     }
   },
+  "contactPage": {
+    "whatsappCta": {
+      "badge": "Schnelle Kontaktaufnahme",
+      "title": "Direkt per WhatsApp schreiben",
+      "button": "Jetzt auf WhatsApp kontaktieren"
+    }
+  },
   "home": {
     "hero": {
       "badge": "Unabhängige Finanzberatung",
