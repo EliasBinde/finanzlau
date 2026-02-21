@@ -105,7 +105,7 @@ export default async function Page({params}: PageProps<'/[lang]/impressum'>) {
                     <strong>Name und Sitz des Versicherers:</strong>
                 </p>
                 <p>
-                    Die Bayrische
+                    Die Bayerische
                     <br/>
                     Thomas-Dehler-Straße 25
                     <br/>

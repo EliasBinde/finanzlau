@@ -1,5 +1,5 @@
 import {NextResponse} from "next/server";
-import {addDays, format, isSunday, parseISO, setHours, setMinutes} from "date-fns";
+import {addDays, format, isSaturday, isSunday, parseISO, setHours, setMinutes} from "date-fns";
 import {formatInTimeZone, fromZonedTime} from "date-fns-tz";
 import {getCalendarClient} from "@/lib/google-calendar";
 
@@ -27,7 +27,7 @@ function overlap(aStart: number, aEnd: number, bStart: number, bEnd: number): bo
 }
 
 function isBookableDay(d: Date): boolean {
-    return !isSunday(d);
+    return !isSaturday(d) && !isSunday(d);
 }
 
 function dayLocalRange(date: Date): { dayStartLocal: Date; dayEndLocal: Date } {
