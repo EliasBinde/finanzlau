@@ -15,6 +15,7 @@ type Slot = {
     startLocal: string;
     endLocal: string;
     available: boolean;
+    availableUserIds?: string[];
 };
 
 type DaySlots = {
@@ -181,6 +182,7 @@ export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
             WINDOW_DAYS,
             CENTER_INDEX,
             activeFrom,
+            pendingDate,
             t.errors.failedWithStatus,
             t.errors.endpointNotFound,
             t.errors.serverError,
@@ -191,7 +193,7 @@ export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
         void load();
     }, [load]);
 
-    const daysData = data?.data ?? [];
+    const daysData = React.useMemo(() => data?.data ?? [], [data?.data]);
     const current = daysData[dayIndex];
 
     const canPrev = dayIndex > 0;
@@ -202,8 +204,18 @@ export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
     }, []);
 
     const goNext = React.useCallback(() => {
-        setDayIndex((i) => (i < daysData.length - 1 ? i + 1 : i));
-    }, [daysData.length]);
+        setDayIndex((i) => {
+            if (i >= daysData.length - 1) return i;
+
+            for (let next = i + 1; next < daysData.length; next++) {
+                if (daysData[next]?.slots.some((s) => s.available)) {
+                    return next;
+                }
+            }
+
+            return i + 1;
+        });
+    }, [daysData]);
 
     const onKeyDown = React.useCallback(
         (e: React.KeyboardEvent<HTMLDivElement>) => {
@@ -373,6 +385,7 @@ export function AppointmentSlots({dict, lang, days = 40, from}: Props) {
                 slot={selectedSlot}
                 onBookedAction={onBooked}
                 lang={lang}
+                timezone={data?.timezone}
                 dict={dict}
             />
         </>

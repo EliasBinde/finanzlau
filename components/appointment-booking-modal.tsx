@@ -16,11 +16,13 @@ type Slot = {
     startLocal: string;
     endLocal: string;
     available: boolean;
+    availableUserIds?: string[];
 };
 
 type Props = {
     dict: Dictionary;
     lang: "de" | "en";
+    timezone?: string;
     open: boolean;
     onOpenChangeAction: (open: boolean) => void;
     slot: Slot | null;
@@ -51,7 +53,7 @@ function getString(formData: FormData, key: string): string {
     return typeof v === "string" ? v.trim() : "";
 }
 
-export function AppointmentBookingModal({ dict, lang, open, onOpenChangeAction, slot, onBookedAction }: Props) {
+export function AppointmentBookingModal({ dict, lang, timezone, open, onOpenChangeAction, slot, onBookedAction }: Props) {
     const t = dict.appointmentBookingModal;
 
     const [state, setState] = React.useState<BookState>({ status: "idle", message: "" });
@@ -95,6 +97,9 @@ export function AppointmentBookingModal({ dict, lang, open, onOpenChangeAction, 
                         email,
                         phone: phone || undefined,
                         message: message || undefined,
+                        timezone: timezone ?? "Europe/Berlin",
+                        locale: lang === "de" ? "de-de" : "en-us",
+                        likelyAvailableUserIds: slot.availableUserIds ?? [],
                     }),
                 });
             } catch {
@@ -114,7 +119,7 @@ export function AppointmentBookingModal({ dict, lang, open, onOpenChangeAction, 
             setState({ status: "success", message: t.status.success });
             onBookedAction?.();
         },
-        [slot, onBookedAction, t.status.bookingFailedFallback, t.status.success, t.status.validationError]
+        [lang, onBookedAction, slot, t.status.bookingFailedFallback, t.status.success, t.status.validationError, timezone]
     );
 
     const slotLabel = slot ? formatSlotLabel(slot, lang) : "";
