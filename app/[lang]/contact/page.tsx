@@ -2,6 +2,7 @@ import {notFound} from "next/navigation";
 import {getDictionary, hasLocale} from "../dictionaries";
 import {ContactForm} from "@/components/contact-form";
 import {AppointmentSlots} from "@/components/appointment-slots";
+import {AbVariantText} from "@/components/ab-variant-text";
 
 function WhatsAppIcon() {
     return (
@@ -28,7 +29,7 @@ export default async function Page({params}: PageProps<'/[lang]/contact'>) {
                             {dict.contactPage.whatsappCta.badge}
                         </p>
                         <h2 className="text-xl font-bold md:text-2xl">
-                            {dict.contactPage.whatsappCta.title}
+                            <AbVariantText items={dict.contactPage.whatsappCta.titles}/>
                         </h2>
                     </div>
                     <a

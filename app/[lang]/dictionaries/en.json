@@ -161,7 +161,10 @@
   "contactPage": {
     "whatsappCta": {
       "badge": "Fast contact",
-      "title": "Message us directly on WhatsApp",
+      "titles": [
+        "Any questions?",
+        "Message us on WhatsApp"
+      ],
       "button": "Contact on WhatsApp now"
     }
   },
