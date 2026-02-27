@@ -51,13 +51,13 @@ export function HomeHero({lang, dict}: Props) {
                     </div>
 
                     <div className="flex flex-wrap gap-3 pt-2">
-                        <Button asChild>
+                        <Button asChild size="lg">
                             <Link href={withLang("/contact", lang)}>
                                 {hero.primaryCta}
                             </Link>
                         </Button>
 
-                        <Button asChild variant="outline">
+                        <Button asChild variant="outline" size="lg">
                             <Link href={withLang("/about", lang)}>
                                 {hero.secondaryCta}
                             </Link>
