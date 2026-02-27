@@ -1,6 +1,7 @@
 import type {Metadata} from "next";
 import {Montserrat} from "next/font/google";
 import Link from "next/link";
+import Script from "next/script";
 import "../globals.css";
 import {Navbar} from "@/components/navbar";
 import {getDictionary, hasLocale} from "./dictionaries";
@@ -68,6 +69,7 @@ function WhatsAppBusinessIcon() {
 
 export default async function RootLayout({children, params}: LayoutProps<"/[lang]">) {
     const {lang} = await params;
+    const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
 
     if (!hasLocale(lang)) notFound();
 
@@ -77,6 +79,41 @@ export default async function RootLayout({children, params}: LayoutProps<"/[lang
     return (
         <html lang={lang} className={montserrat.variable}>
         <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        {gtmId ? (
+            <>
+                <Script id="gtm-consent-default" strategy="beforeInteractive">
+                    {`
+                      window.dataLayer = window.dataLayer || [];
+                      window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+                      window.gtag('consent', 'default', {
+                        analytics_storage: 'denied',
+                        ad_storage: 'denied',
+                        ad_user_data: 'denied',
+                        ad_personalization: 'denied',
+                        functionality_storage: 'granted',
+                        security_storage: 'granted'
+                      });
+                    `}
+                </Script>
+                <Script id="gtm-loader" strategy="afterInteractive">
+                    {`
+                      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                      })(window,document,'script','dataLayer','${gtmId}');
+                    `}
+                </Script>
+                <noscript>
+                    <iframe
+                        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+                        height="0"
+                        width="0"
+                        style={{display: "none", visibility: "hidden"}}
+                    />
+                </noscript>
+            </>
+        ) : null}
         <div className="flex min-h-screen flex-col">
             <header className="border-b">
                 <div className="mx-auto flex h-16 max-w-7xl items-center px-4 sm:px-6 lg:px-8">
