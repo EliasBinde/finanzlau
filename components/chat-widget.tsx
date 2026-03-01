@@ -1,8 +1,9 @@
 "use client";
 
 import * as React from "react";
-import {MessageCircle, X, Send, ArrowRight} from "lucide-react";
+import {MessageCircle, X, Send, ArrowRight, Info} from "lucide-react";
 import {Button} from "@/components/ui/button";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@/components/ui/tooltip";
 import {cn} from "@/lib/utils";
 import Link from "next/link";
 
@@ -17,7 +18,7 @@ type ApiMessage = {
     content: string;
 };
 
-type Cta = {href: string; label: string};
+type Cta = { href: string; label: string };
 
 const INITIAL_MESSAGES: Message[] = [
     {
@@ -40,7 +41,7 @@ function parseInline(text: string): React.ReactNode[] {
     });
 }
 
-function parseBotText(raw: string): {nodes: React.ReactNode; ctas: Cta[]} {
+function parseBotText(raw: string): { nodes: React.ReactNode; ctas: Cta[] } {
     // Extract [CTA:/path|Label] tokens
     const ctaRegex = /\[CTA:([^|]+)\|([^\]]+)\]/g;
     const ctas: Cta[] = [];
@@ -110,7 +111,7 @@ function parseBotText(raw: string): {nodes: React.ReactNode; ctas: Cta[]} {
 
 // ── Bot message component ─────────────────────────────────────────────────────
 
-function BotMessageContent({text, lang}: {text: string; lang: string}) {
+function BotMessageContent({text, lang}: { text: string; lang: string }) {
     const {nodes, ctas} = parseBotText(text);
     return (
         <div className="space-y-2">
@@ -133,8 +134,8 @@ function BotMessageContent({text, lang}: {text: string; lang: string}) {
 
 // ── Widget ────────────────────────────────────────────────────────────────────
 
-export function ChatWidget({lang}: {lang: string}) {
-    const [open, setOpen] = React.useState(false);
+export function ChatWidget({lang}: { lang: string }) {
+    const [open, setOpen] = React.useState(true);
     const [messages, setMessages] = React.useState<Message[]>(INITIAL_MESSAGES);
     const [history, setHistory] = React.useState<ApiMessage[]>([]);
     const [input, setInput] = React.useState("");
@@ -210,11 +211,13 @@ export function ChatWidget({lang}: {lang: string}) {
         <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-3">
             {/* Chat window */}
             {open && (
-                <div className="flex h-[560px] w-80 flex-col overflow-hidden rounded-xl border bg-background shadow-xl sm:w-96">
+                <div
+                    className="flex h-[560px] w-80 flex-col overflow-hidden rounded-xl border bg-background shadow-xl sm:w-96">
                     {/* Header */}
                     <div className="flex items-center justify-between border-b bg-primary px-4 py-3">
                         <div className="flex items-center gap-2">
-                            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/20">
+                            <div
+                                className="flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/20">
                                 <MessageCircle className="h-4 w-4 text-primary-foreground"/>
                             </div>
                             <div>
@@ -222,15 +225,32 @@ export function ChatWidget({lang}: {lang: string}) {
                                 <p className="text-xs text-primary-foreground/70">Assistent</p>
                             </div>
                         </div>
-                        <Button
-                            variant="ghost"
-                            size="icon-sm"
-                            onClick={() => setOpen(false)}
-                            aria-label="Chat schließen"
-                            className="text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
-                        >
-                            <X className="h-4 w-4"/>
-                        </Button>
+                        <div className="flex items-center gap-1">
+                            <Tooltip>
+                                <TooltipTrigger asChild>
+                                    <button
+                                        aria-label="Hinweis zur KI"
+                                        className="flex items-center gap-1 rounded-full bg-primary-foreground/15 px-2 py-0.5 text-[10px] text-white text-xs hover:bg-primary-foreground/25 transition-colors"
+                                    >
+                                        <Info className="h-2.5 w-2.5"/>
+                                        KI kann Fehler machen.
+                                    </button>
+                                </TooltipTrigger>
+                                <TooltipContent side="bottom" className="max-w-56 text-center">
+                                    KI kann Fehler machen. Für verbindliche Auskünfte empfehlen wir ein persönliches
+                                    Beratungsgespräch.
+                                </TooltipContent>
+                            </Tooltip>
+                            <Button
+                                variant="ghost"
+                                size="icon-sm"
+                                onClick={() => setOpen(false)}
+                                aria-label="Chat schließen"
+                                className="text-primary-foreground hover:bg-primary-foreground/20 hover:text-primary-foreground"
+                            >
+                                <X className="h-4 w-4"/>
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Messages */}
@@ -250,9 +270,12 @@ export function ChatWidget({lang}: {lang: string}) {
                                         <BotMessageContent text={msg.text} lang={lang}/>
                                     ) : (
                                         <span className="flex gap-1 items-center py-0.5">
-                                            <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:0ms]"/>
-                                            <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:150ms]"/>
-                                            <span className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:300ms]"/>
+                                            <span
+                                                className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:0ms]"/>
+                                            <span
+                                                className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:150ms]"/>
+                                            <span
+                                                className="h-1.5 w-1.5 rounded-full bg-current animate-bounce [animation-delay:300ms]"/>
                                         </span>
                                     )
                                 ) : (
