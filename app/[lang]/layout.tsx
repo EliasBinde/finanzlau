@@ -9,6 +9,7 @@ import {notFound} from 'next/navigation'
 import {locales} from "@/proxy";
 import {UrlObject} from "url";
 import {CookieConsentBanner} from "@/components/cookie-consent-banner";
+import {ChatWidget} from "@/components/chat-widget";
 
 
 const montserrat = Montserrat({
@@ -168,6 +169,7 @@ export default async function RootLayout({children, params}: LayoutProps<"/[lang
                     </div>
                 </div>
             </footer>
+            <ChatWidget lang={lang}/>
             <CookieConsentBanner dict={dict} lang={lang}/>
         </div>
         </body>
